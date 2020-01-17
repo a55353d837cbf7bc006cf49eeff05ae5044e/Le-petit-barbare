@@ -1,0 +1,362 @@
+.body{
+	background-color: black;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+ #input{
+	cursor: pointer;
+}
+.container {
+	position: absolute;
+	top: 60%; left: 60%;
+	transform: translate(-60%, -60%);
+	width: 1500px;
+	height: 1250px;
+}   
+.bfld {
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	width: 980px;
+	height: 550px;
+	margin: 0px;
+	background-image: url("/maps/level1-1.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.ligne{
+	display: flex;
+	flex-direction: row;
+
+}
+.land{
+	float: left;
+	width: 87px;
+	height: 87px;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 30px;
+	text-align: center;
+}
+.perso{
+	height: 60px;
+	width: 70px;
+}
+.right{
+	background-image: url("/img/test_1.gif");
+}
+.left{
+	background-image: url("/img/left_1.gif");
+}
+.up{
+	background-image: url("/img/up_1.gif");
+}
+.down{
+	background-image: url("/img/down_1.gif");
+}
+.perso_right{
+	background: url('/img/test.png');
+	height: 52px; 
+	width: 50px;
+	z-index: 10;
+	-webkit-animation: sprite-animation 1.2s steps(9,end);
+	-moz-animation: sprite-animation 1.2s steps(9,end); 
+	-ms-animation: sprite-animation 1.2s steps(9,end); 
+	animation: sprite-animation 1.2s steps(9,end);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes sprite-animation {
+	from { background-position: 0 0; }
+	to { background-position: 0 -993px;
+		transition: transform 12s linear;
+		transform: translate3d(102px, 0, 100px);
+	}
+}
+
+@-ms-keyframes sprite-animation {
+	from { background-position: 0 0; }
+	to { background-position: 0 -993px;
+		transition: transform 12s linear;
+		transform: translate3d(102px, 0, 100px);
+	}
+}
+
+@-moz-keyframes sprite-animation {
+	from { background-position: 0 0; }
+	to { background-position: 0 -993px;
+		transition: transform 12s linear;
+		transform: translate3d(102px, 0, 100px);
+	}
+}
+
+@keyframes sprite-animation {
+	from { background-position: 0 0; }
+	to { background-position: 0 -993px;
+		transition: transform 12s linear;
+		transform: translate3d(102px, 0, 100px);
+	}
+}  
+.perso_left{
+	background: url('/img/left.png');
+	height: 55px; 
+	width: 50px;
+	z-index: 10;
+	-webkit-animation: sprite 1.2s steps(9,end);
+	-moz-animation: sprite 1.2s steps(9,end); 
+	-ms-animation: sprite 1.2s steps(9,end); 
+	animation: sprite 1.2s steps(9,end);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes sprite {
+	from { background-position: 0 0; }
+	to { background-position: -593px 0;
+		transition: transform 12s linear;
+		transform: translate3d(-91px, 0px, 0px);
+	}
+}
+
+@-ms-keyframes sprite {
+	from { background-position: 0 0; }
+	to { background-position: -593px 0;
+		transition: transform 12s linear;
+		transform: translate3d(-91px, 0px, 0px);
+	}
+}
+
+@-moz-keyframes sprite {
+	from { background-position: 0 0; }
+	to { background-position: -593px 0;
+		transition: transform 12s linear;
+		transform: translate3d(-91px, 0px, 0px);
+	}
+}
+
+@keyframes sprite {
+	from { background-position: 0 0; }
+	to { background-position: -593px 0;
+		transition: transform 12s linear;
+		transform: translate3d(-91px, 0px, 0px);
+	}
+}
+.perso_up{
+	background: url('/img/up.png');
+	height: 60px; 
+	width: 50px;
+	z-index: 10;
+	-webkit-animation: sprite_haut 1.2s steps(9,end);
+	-moz-animation: sprite_haut 1.2s steps(9,end); 
+	-ms-animation: sprite_haut 1.2s steps(9,end); 
+	animation: sprite_haut 1.2s steps(9,end);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes sprite_haut {
+	from { background-position: 0 0; }
+	to { background-position: 0 -640px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, -90px, 0px);
+	}
+}
+
+@-ms-keyframes sprite_haut {
+	from { background-position: 0 0; }
+	to { background-position: 0 -640px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, -90px, 0px);
+	}
+}
+
+@-moz-keyframes sprite_haut {
+	from { background-position: 0 0; }
+	to { background-position: 0 -640px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, -90px, 0px);
+	}
+}
+
+@keyframes sprite_haut {
+	from { background-position: 0 0; }
+	to { background-position: 0 -640px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, -90px, 0px);
+	}
+}
+
+.perso_down{
+	background: url('/img/down.png');
+	height: 60px; 
+	width: 50px;
+	z-index: 10;
+	-webkit-animation: sprite_bas 1.2s steps(9,end);
+	-moz-animation: sprite_bas 1.2s steps(9,end); 
+	-ms-animation: sprite_bas 1.2s steps(9,end); 
+	animation: sprite_bas 1.2s steps(9,end);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes sprite_bas {
+	from { background-position: 0 0; }
+	to { background-position: 0 -600px;
+		transition: transform 12s linear;
+		transform: translate3d(0, 90px, 0px);
+	}
+}
+
+@-ms-keyframes sprite_bas {
+	from { background-position: 0 0; }
+	to { background-position: 0 -600px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, 90px, 0px);
+	}
+}
+
+@-moz-keyframes sprite_bas {
+	from { background-position: 0 0; }
+	to { background-position: 0 -600px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, 90px, 0px);
+	}
+}
+
+@keyframes sprite_bas {
+	from { background-position: 0 0; }
+	to { background-position: 0 -600px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, 90px, 0px);
+	}
+}
+
+.ghost{
+	height: 60px;
+	width: 50px;
+}
+.scale {
+	 transform: scale(1);
+}
+.text-border {
+	text-shadow: 1px 1px 0 #262119, -1px 1px 0 #262119, 1px -1px 0 #262119,
+	  -1px -1px 0 #262119, 0 1px 0 #262119, 0 -1px 0 #262119, -1px 0 0 #262119,
+	  1px 0 0 #262119, 2px 2px 0 #262119, -2px 2px 0 #262119, 2px -2px 0 #262119,
+	  -2px -2px 0 #262119, 0 2px 0 #262119, 0 -2px 0 #262119, -2px 0 0 #262119,
+	  2px 0 0 #262119, 1px 2px 0 #262119, -1px 2px 0 #262119, 1px -2px 0 #262119,
+	  -1px -2px 0 #262119, 2px 1px 0 #262119, -2px 1px 0 #262119,
+	  2px -1px 0 #262119, -2px -1px 0 #262119;
+  }
+ #player-container { 
+	z-index: 100;
+	position: absolute;
+	top: 100px;
+	left: 0px;
+	transform-origin: top left;
+	pointer-events: none;
+}
+#enemy-container {
+	z-index: 100;
+	position: absolute;
+	top: 70px;
+	right: 97px;
+	transform-origin: top right;
+	pointer-events: none;
+}
+#player-forms {
+	color: #eeeeec;
+	margin: auto;
+	transform-origin: bottom;
+	list-style: none;
+	background: #bc9266;
+	box-shadow: inset 0px 0px 0 3px rgba(255, 234, 169, 0.5);
+	border-radius: 10px ;
+	padding: 8px;
+	border: 2 solid rgb(255, 255, 255);
+	border-right-width: 4px;
+	border-bottom-width: 4px;
+	pointer-events: auto;
+	width: 400px;
+}
+#enemy-forms {
+	color: #eeeeec;
+	margin: auto;
+	transform-origin: bottom;
+	list-style: none;
+	background: #bc9266;
+	box-shadow: inset 0px 0px 0 3px rgba(255, 234, 169, 0.5);
+	border-radius: 10px;
+	padding: 8px;
+	border: 0 solid rgb(38, 33, 25);
+	border-right-width: 4px;
+	border-bottom-width: 4px;
+	pointer-events: auto;
+}
+
+.player-life-panel {
+	width: 100%;
+	height: 24px;
+	user-select: none;
+	border-radius: 3px;
+	margin-top: 8px;
+	box-shadow: 0 0 0 3px rgb(38, 33, 25);
+}
+.life{
+	padding-left: 20px;
+	text-align: left;
+	font-size: 22px;
+	border-radius: 3px;
+	height: 100%;
+	display: flex;
+	background-color: Red;
+}
+.danger{
+	background-color: Red;
+}
+#enemy-life-panel {
+	z-index: 100;
+	width: 320px;
+	height: 22px;
+	color: #eeeeec;
+	text-align: left;
+	line-height: 28px;
+	font-size: 18px;
+	padding-left: 20px;
+	user-select: none;
+	box-shadow: 0 0 0 3px rgb(38, 33, 25);
+	border-radius: 3px;
+	border: 2px solid rgb(244, 87, 50);
+	margin-top: 8px;
+	background: linear-gradient (9Odeg, rgb(239, 23, 38) 100%, rgb(237, 220, 160) 100%);
+	background-color: Cyan;
+
+}
+.name-panel {
+	z-index: 100;
+	height: 24px;
+	font-size: 24px;
+	line-height: 26px;
+	user-select: none;
+	text-align: left;
+	color: #eeeeec;
+	background: #9a7753;
+	box-shadow: 0 0 0 3px rgb(38, 33, 25);
+	border-radius: 3px;
+	border: 2px solid rgba(38, 24, 8, 0.4);
+	display: flex;
+	max-width: 400px;
+ }
+#player-name-panel {
+	display: flex;
+	font-size: 24px;
+	line-height: 26px;
+	user-select: none;
+	text-align: left;
+	color: #eeeeec;
+	width: 100%;
+	padding-left: 6px;
+}
+#player-level-panel {
+	z-index: 100;
+	left: 2px;
+	color: #eeeeec;
+	text-align: right;
+	line-height: 26px;
+	font-size: 22px;
+	padding-right: 6px;
+	width: 130px;
+}
+

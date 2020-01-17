@@ -1,0 +1,229 @@
+.body{
+	background-color: black;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+ #input{
+	cursor: pointer;
+}
+.shop {
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	width: 1360px;
+	height: 556px;
+	margin: 25px;
+	border: 2px solid white;
+	background-image: url("/maps/44-magasin.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.grille-ligne {
+	display: flex;
+	flex-direction: row;
+}
+.land{
+	float: left;
+	width: 48.6px;
+	height: 50px;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 30px;
+	text-align: center;
+}
+.perso{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	height: 52px;
+	width: 50px;
+}
+.right{
+	background-image: url("/img/test_1.gif");
+	height: 52px;
+	width: 50px;
+}
+.left{
+	background-image: url("/img/left_1.gif");
+	height: 56px;
+	width: 50px;
+}
+.up{
+	background-image: url("/img/up_1.gif");
+	height: 60px;
+	width: 54px;
+}
+.down{
+	background-image: url("/img/down_1.gif");
+	height: 58px;
+	width: 56px;
+}
+.perso_right{
+	background: url('/img/test.png');
+	height: 52px;
+	width: 50px;
+	z-index: 10;
+	-webkit-animation: sprite-animation 0.3s steps(9,end);
+	-moz-animation: sprite-animation 0.3s steps(9,end);
+	-ms-animation: sprite-animation 0.3s steps(9,end);
+	animation: sprite-animation 0.3s steps(9,end);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes sprite-animation {
+	from { background-position: 0 0; }
+	to { background-position: 0 -993px;
+		transition: transform 12s linear;
+		transform: translate3d(44px, 0, 100px);
+	}
+}
+
+@-ms-keyframes sprite-animation {
+	from { background-position: 0 0; }
+	to { background-position: 0 -993px;
+		transition: transform 12s linear;
+		transform: translate3d(44px, 0, 100px);
+	}
+}
+
+@-moz-keyframes sprite-animation {
+	from { background-position: 0 0; }
+	to { background-position: 0 -993px;
+		transition: transform 12s linear;
+		transform: translate3d(44px, 0, 100px);
+	}
+}
+
+@keyframes sprite-animation {
+	from { background-position: 0 0; }
+	to { background-position: 0 -993px;
+		transition: transform 12s linear;
+		transform: translate3d(44px, 0, 100px);
+	}
+}
+.perso_left{
+	background: url('/img/left.png');
+	height: 55px;
+	width: 50px;
+	z-index: 10;
+	-webkit-animation: sprite 0.3s steps(9,end);
+	-moz-animation: sprite 0.3s steps(9,end);
+	-ms-animation: sprite 0.3s steps(9,end);
+	animation: sprite 0.3s steps(9,end);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes sprite {
+	from { background-position: 0 0; }
+	to { background-position: -593px 0;
+		transition: transform 12s linear;
+		transform: translate3d(-33px, 0px, 0px);
+	}
+}
+@-ms-keyframes sprite {
+	from { background-position: 0 0; }
+	to { background-position: -593px 0;
+		transition: transform 12s linear;
+		transform: translate3d(-33px, 0px, 0px);
+	}
+}
+
+@-moz-keyframes sprite {
+	from { background-position: 0 0; }
+	to { background-position: -593px 0;
+		transition: transform 12s linear;
+		transform: translate3d(-33px, 0px, 0px);
+	}
+}
+
+@keyframes sprite {
+	from { background-position: 0 0; }
+	to { background-position: -593px 0;
+		transition: transform 12s linear;
+		transform: translate3d(-33px, 0px, 0px);
+	}
+}
+.perso_up{
+	background: url('/img/up.png');
+	height: 60px;
+	width: 50px;
+	z-index: 10;
+	-webkit-animation: sprite_haut 0.3s steps(9,end);
+	-moz-animation: sprite_haut 0.3s steps(9,end);
+	-ms-animation: sprite_haut 0.3s steps(9,end);
+	animation: sprite_haut 0.3s steps(9,end);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes sprite_haut {
+	from { background-position: 0 0; }
+	to { background-position: 0 -640px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, -43px, 0px);
+	}
+}
+
+@-ms-keyframes sprite_haut {
+	from { background-position: 0 0; }
+	to { background-position: 0 -640px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, -43px, 0px);
+	}
+}
+
+@-moz-keyframes sprite_haut {
+	from { background-position: 0 0; }
+	to { background-position: 0 -640px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, -43px, 0px);
+	}
+}
+
+@keyframes sprite_haut {
+	from { background-position: 0 0; }
+	to { background-position: 0 -640px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, -43px, 0px);
+	}
+}
+
+.perso_down{
+	background: url('/img/down.png');
+	height: 60px;
+	width: 50px;
+	z-index: 10;
+	-webkit-animation: sprite_bas 0.3s steps(9,end);
+	-moz-animation: sprite_bas 0.3s steps(9,end);
+	-ms-animation: sprite_bas 0.3s steps(9,end);
+	animation: sprite_bas 0.3s steps(9,end);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes sprite_bas {
+	from { background-position: 0 0; }
+	to { background-position: 0 -600px;
+		transition: transform 12s linear;
+		transform: translate3d(0, 47px, 0px);
+	}
+}
+
+@-ms-keyframes sprite_bas {
+	from { background-position: 0 0; }
+	to { background-position: 0 -600px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, 47px, 0px);
+	}
+}
+
+@-moz-keyframes sprite_bas {
+	from { background-position: 0 0; }
+	to { background-position: 0 -600px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, 47px, 0px);
+	}
+}
+
+@keyframes sprite_bas {
+	from { background-position: 0 0; }
+	to { background-position: 0 -600px;
+		transition: transform 12s linear;
+		transform: translate3d(0px, 47px, 0px);
+	}
+}
+

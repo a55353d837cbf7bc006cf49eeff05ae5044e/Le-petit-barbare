@@ -1,0 +1,12 @@
+body {
+	background-image: url('/img/2.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+    font-family: "Algerian";
+    font-size: 10px;
+    color : rgb(0, 0, 0);
+	font-weight:500px;
+	text-align: left;
+	text-decoration: none;
+    height: 500px;
+}
