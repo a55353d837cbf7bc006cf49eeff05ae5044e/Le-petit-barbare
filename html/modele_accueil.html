@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="./css/visuel_modele_accueil.css" type="text/css">
+	</head>
+	<body><center>
+			{erreur}
+		<div id = 'cadre'>
+			<form action="/req_identifier" name = 'login-form' class = 'login-form' method="GET">
+				<div id = 'header'> 
+					<h2>Connexion</h2>
+				</div>
+				<p/>
+				<div class = 'content'>
+					<input type="text" name="pseudo" placeholder="Pseudo" value="{pseudo}">
+					<div class = 'user-icon'></div>
+					<br><br>
+					<input type="password" name="password" placeholder="Mot de passe" value="">
+					<div class = 'user-icon'></div>
+					<br/>
+					<input id = 'bouton' type="submit" name="action" value="Se connecter">
+				</div>
+			</form>
+
+			<p/>
+		</div>
+	</center>
+	</body>
+</html>

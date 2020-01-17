@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"> 
+		<title>map</title>
+		<link rel="stylesheet" href="visuel_map.css" type="text/css">
+	</head>
+
+	<body class="body">
+		<div class="container" >
+            <div id="player-container" class="text-border scale">
+                <div id="player-forms">
+                    <div class="name-panel">
+                        <div id="player-name-panel">{nom}</div>
+                        <div id="player-level-panel">{level}/10</div>
+                    </div>
+                    <div class="player-life-panel">
+                        <div class="life" id = "life"
+                             style="width: {life}">
+                        <div id = "container">{life}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-border scale" id="enemy-container">
+                <div id="enemy-forms">
+                    <div id="enemy-life-panel">{m1}</div>
+                </div>
+            </div>
+
+			<div class='bfld' id = 'bfld'>
+				{land}
+			</div>
+		</div>
+
+		<form action="/req_debuter" method="GET">
+            <input id="input" type="submit" name="action" value="Retour accueil jeu">
+        </form>
+
+        <p/>
+        <script>
+            window.addEventListener("keydown", function (event) {
+				let newUrl = null;
+				let sprite = document.querySelector(".perso");
+				console.log(event.keyCode);
+
+				if (event.keyCode === 38) {
+					sprite.classList.add('perso_up');
+
+					newUrl = "http://localhost:5000/move?action=Haut";
+				} else if(event.keyCode === 40){
+					sprite.classList.add('perso_down');
+
+					newUrl = "http://localhost:5000/move?action=Bas";
+				} else if(event.keyCode === 39){
+					sprite.classList.add('perso_right');
+
+					newUrl = "http://localhost:5000/move?action=Droite";
+				} else if(event.keyCode === 37){
+					sprite.classList.add('perso_left');
+
+					newUrl = "http://localhost:5000/move?action=Gauche";
+				} else if(event.keyCode === 32){
+					newUrl = "http://localhost:5000/move?action=Attaquer";
+				}
+
+				if(newUrl !== null){
+					event.preventDefault();
+					fetch(newUrl)
+						.then(function (reponse) { return reponse.json(); })
+						.then(function (reponse) {
+							// Récupération de l'élément DOM
+							if(reponse.type === 'refresh'){
+								function timed (){
+                                	setTimeout(myTime, 1205);
+                            	}
+                            	timed();
+                            	function myTime(){
+                                	document.getElementById("bfld").innerHTML = reponse.value;
+                            	}
+                                const perso = document.getElementById("container");
+                                const life = document.getElementById("life");
+                                var bar_life = reponse.life;
+
+
+								// Assignation du nouveau HTML
+								perso.innerHTML = reponse.life;
+                                life.style.width = bar_life + "%";
+
+							} else if(reponse.type === 'update') {
+								document.querySelector('html').innerHTML = reponse.value;
+								//window.location = reponse.value;
+							}
+					
+						});
+				}
+			});
+        </script>
+	</body>
+</html>

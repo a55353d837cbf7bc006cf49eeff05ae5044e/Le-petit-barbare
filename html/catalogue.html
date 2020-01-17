@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Achats</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="./css/visuel_acheter.css" type="text/css">
+    </head>
+    <body>
+		<form action="/req_shop" method="GET">
+			<input type="submit" class="button" name="back" value="Back"/>
+		</form>
+		{erreur}
+        <main class="Container">
+			<img class="titre pixel" src="catalogue.png" alt="catalogue" />
+			<div class="container">
+				<div class="money">{money}</div>
+				<img class="epee" src="/img/epee.gif"><div class="qte Epee">x{epee}</div></img>
+				<img class="masse" src="/img/masse.gif"><div class="qte Masse">x{masse}</div></img>
+				<img class="belle" src="/img/belle_epee.gif"><div class="qte Belle">x{belle_epee}</div></img>
+				<img class="casse" src="/img/epee_casse.gif"><div class="qte Casse">x{epee_casse}</div></img>
+				<img class="hache" src="/img/hache.gif"><div class="qte Hache">x{hache}</div></img>
+				<img class="dague" src="/img/dague.gif"><div class="qte Dague">x{dague}</div></img>
+				<img class="arc" src="/img/arc_1.png"><div class="qte Arc">x{arc}</div></img>
+				<img class="potion" src="/img/potion_1.png"><div class="qte Potion">x{potion}</div></img>
+			</div>
+
+
+            <div class="sprite">
+                <div class="armes">
+                    <img src="/img/shadow.png" class="shadow pixel" />
+                </div>
+                <div class="Navigation boite">
+                </div>
+                <button class="buttonNext prev" onclick="setPreviousActive()">
+                    <svg viewBox="0 -0.5 4 7" shape-rendering="crispEdges">
+                        <path stroke="#434343" d="M3 0h1M2 1h1M1 2h1M0 3h1M1 4h1M2 5h1M3 6h1" />
+                    </svg>
+                </button>
+                <button class="buttonNext next" onclick="setNextActive()">
+                    <svg viewBox="0 -0.5 4 7" shape-rendering="crispEdges">
+                        <path stroke="#434343" d="M0 0h1M1 1h1M2 2h1M3 3h1M2 4h1M1 5h1M0 6h1" />
+                    </svg>
+				</button>
+				<div class='Prix'></div>
+				<div class="description"></div>
+				<form action="/req_acheter" method="GET" class="achat">
+				</form>
+
+				
+            </div>
+        </main>
+		<script>
+			var weapons = document.querySelector(".armes");
+			var achat = document.querySelector(".achat");
+			var precio = document.querySelector(".Prix");
+			var descr = document.querySelector(".description");
+			var armes = [
+			   "/img/dague.gif",
+			   "/img/hache.gif",
+			   "/img/epee.gif",
+			   "/img/masse.gif",
+			   "/img/belle_epee.gif",
+			   "/img/epee_casse.gif",
+			   "/img/arc_1.png",
+			   "/img/potion_1.png",
+			];
+			let prix = [
+				"7", "7", "10", "5", "5", "5", "6", "2",
+			];
+			let description = [
+				"description dague",
+				"description hache", 
+				"description epee",
+				"description masse",
+				"description belle_epee",
+				"description epee_casse",
+				"description arc",
+				"Potion pour soigner de +30Pv",
+			];
+
+			let activeIndex = 0;
+			let spritesheetElements = "";
+			let navigationElements = "";
+			let buy = "";
+			let price = "";
+			let texte = "";
+
+			armes.forEach((armes, index) => {
+				spritesheetElements += `<img src="${armes}" class="pixel armes_sprite index-${index}" />`
+				navigationElements += `<button class="carre index-${index}" onclick='setActive(${index})' />`
+				buy += `<button class="bouton index-${index}" name="buy" value="${index}">Acheter</button>` 
+				price += `<label class="prix index-${index}">Prix : ${prix[index]}$</label>`
+				texte += `<label class="descrip index-${index}">${description[index]}</label>`
+			});
+			
+			weapons.insertAdjacentHTML( 'beforeend', spritesheetElements );
+
+			document.querySelector(".Navigation").insertAdjacentHTML( 'beforeend', navigationElements );
+		
+			achat.insertAdjacentHTML( 'beforeend', buy);
+			precio.insertAdjacentHTML('afterend', price);
+			descr.insertAdjacentHTML('afterend', texte);
+
+			function setActive(index) {
+				activeIndex = index;
+				document.querySelectorAll(`.active`).forEach(node => {
+					node.classList.remove("active")
+				})
+				document.querySelectorAll(`.index-${index}`).forEach(node => {
+					node.classList.add("active")
+				})
+			}
+
+
+			function setPreviousActive() {
+				activeIndex = activeIndex > 0 ? activeIndex - 1 : armes.length - 1;
+				setActive(activeIndex)
+			}
+
+			function setNextActive() {
+				activeIndex = activeIndex < armes.length - 1 ? activeIndex + 1 : 0;
+				setActive(activeIndex)	
+			}
+
+			setActive(activeIndex);
+		</script>
+	</body>
+</html>

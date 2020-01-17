@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+			<link rel="stylesheet" href="./css/visuel_accueil.css" type="text/css">
+		</head>
+	<body><center>
+		
+		{erreur}
+		
+			<div id = 'header'>
+				<h2>Le Petit Barbare</h2>
+			</div>
+			
+		
+	    <form action="/req_commencer" method="GET">
+            <button id = 'bouton' name="action" value="creer">Identifiez-vous !</button>
+        </form></br>
+
+
+		<form action="/req_afficher_formulaire_inscription" method="GET">
+            <button id = 'bouton' name="action" value="creer">Creer compte</button>
+		</form>
+		 <script>
+            (function() {
+
+				var sprite = document.querySelector('.sprite'),
+					key = {left: false, right: false},
+					trans = 0,
+					property = getTransformProperty(sprite);
+
+				function getTransformProperty(element) {
+					var properties = [
+						'transform',
+						'WebkitTransform',
+						'msTransform',
+						'MozTransform',
+						'OTransform'
+					];
+					var p;
+					while (p = properties.shift()) {
+						if (typeof element.style[p] != 'undefined') {
+							return p;
+						}
+					}
+					return false;
+				}
+
+				function translate() {
+					sprite.style[property] = 'translateX(' + trans + 'px)';
+				}
+
+				function walk(e) {
+					var keyCode = e.keyCode;
+					if (keyCode === 39) {
+						key.right = true;
+					} else if (keyCode === 37) {
+						key.left = true;
+					}
+				if (key.right === true) {
+						trans += 10;
+						translate();
+						sprite.classList.remove('left');
+						sprite.classList.add('right');
+						sprite.classList.add('walk-right');
+					} else if (key.left === true) {
+						trans -= 10;
+						translate();
+						sprite.classList.remove('right');
+						sprite.classList.add('left');
+						sprite.classList.add('walk-left');
+					}
+				}
+
+				function stop(e) {
+					var keyCode = e.keyCode;
+					if (keyCode === 39) {
+						key.right = false;
+					} else if (keyCode === 37) {
+						key.left = false;
+					}
+					if (key.right === false) {
+						sprite.classList.remove('walk-right');
+					} if (key.left === false) {
+						sprite.classList.remove('walk-left');
+					}
+				}
+
+				document.addEventListener('keydown', walk, false);
+				document.addEventListener('keyup', stop, false);
+
+				})();
+		</script>
+		<div class="myDiv"></div>
+		<figure>
+			<audio autoplay = "true" src="music.mp3">
+				<code>audio</code> element.
+			</audio>
+		</figure>
+	</center>
+	</body>
+</html>

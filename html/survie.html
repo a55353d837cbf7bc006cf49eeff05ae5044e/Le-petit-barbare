@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<meta charset="UTF-8"> 
+		<title>map</title>
+		<style type="text/css">
+		.bfld {   
+			position: absolute; 
+			top: 50%; left: 50%; 
+			transform: translate(-50%, -50%); 
+			width: 640px;
+			height: 320px;
+			margin: 20px;
+			border: 25px solid #873600 ;
+		}
+		.black {
+			float: left;
+			width: 80px;
+			height: 80px;
+			background-color: #873600 ;
+			font-size:50px;
+			text-align:center;
+			display: table-cell;
+			vertical-align:middle;
+		}
+		.white {
+			float: left;
+			width: 80px;
+			height: 80px;
+			background-color: #F5CBA7  ;
+			font-size:50px;
+			text-align:center;
+			display: table-cell;
+			vertical-align:middle;
+		}
+		</style>
+	</head>
+
+	<body>
+		
+		<form action="/req_debuter" method="GET">
+            <input type="submit" name="action" value="Retour accueil jeu">
+        </form>
+
+        <p/>
+	
+		<script>
+            window.addEventListener("keydown", function (event) {
+                    if (event.keyCode === 90) {
+                        event.preventDefault();
+                        window.location = "http://localhost:5000/move?action=Haut&&key=" + event.keyCode;
+                    } else if(event.keyCode === 83){
+                        event.preventDefault();
+                        window.location = "http://localhost:5000/move?action=Bas&&key=" + event.keyCode;
+                    } else if(event.keyCode === 68){
+                        event.preventDefault();
+                        window.location = "http://localhost:5000/move?action=Droite&&key=68"
+                    } else if(event.keyCode === 81){
+                        event.preventDefault();
+                        window.location = "http://localhost:5000/move?action=Gauche&&key=81"
+                    } else if(event.keyCode === 32){
+                        event.preventDefault();
+                        window.location = "http://localhost:5000/move?action=Attaquer&&key=32"
+                    }
+                });
+        </script>
+                         
+
+		<div class="bfld">
+		<!-- Ligne 1 -->
+		<div class="white">{aa}</div>
+		<div class="black">{ab}</div>
+		<div class="white">{ac}</div>
+		<div class="black">{ad}</div>
+		<div class="white">{ae}</div>
+		<div class="black">{af}</div>
+		<div class="white">{ag}</div>
+		<div class="black">{ah}</div>
+		<!-- Ligne 2 -->
+		<div class="black">{ba}</div>
+		<div class="white">{bb}</div>
+		<div class="black">{bc}</div>
+		<div class="white">{bd}</div>
+		<div class="black">{be}</div>
+		<div class="white">{bf}</div>
+		<div class="black">{bg}</div>
+		<div class="white">{bh}</div>
+		  <!-- Ligne 3 -->
+        <div class="white">{ca}</div>
+        <div class="black">{cb}</div>
+        <div class="white">{cc}</div>
+        <div class="black">{cd}</div>
+        <div class="white">{ce}</div>
+        <div class="black">{cf}</div>
+        <div class="white">{cg}</div>
+		<div class="black">{ch}</div>
+		  <!-- Ligne 4 -->
+        <div class="black">{da}</div>
+        <div class="white">{db}</div>
+        <div class="black">{dc}</div>
+        <div class="white">{dd}</div>
+        <div class="black">{de}</div>
+        <div class="white">{df}</div>
+        <div class="black">{dg}</div>
+        <div class="white">{dh}</div>
+		</div>
+	</body>
+</html>

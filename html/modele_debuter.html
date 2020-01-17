@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="./css/visuel_debuter.css" type="text/css">
+	</head>
+	<body><center>
+			{erreur}
+		<div id = "cadre">
+			<div id = 'header'>
+				<h2>Choisissez un mode de jeu</h2>
+			</div>
+		
+			<p/>
+
+<!-- Changer req_jeu_histoire a req_accueil_sauvegarde. Plus rapide ici pour tester le code -->
+
+			<form action="/req_jeu_histoire" method="GET">
+				<input id = 'bouton' type="submit" name="action" value="Jeu mode histoire">
+			</form>
+
+			<p/>
+
+			<form action="/req_jeu_survie" method="GET">
+				<input id = 'bouton' type="submit" name="action" value="Jeu mode survie">
+			</form>
+
+			<p/>
+		</div>
+
+	</center>
+	</body>
+</html>
