@@ -58,7 +58,15 @@
 -->
         <p/>
         <script>
-            window.addEventListener("keydown", function (event) {
+            let epee;
+			let hache;
+			let dague;
+			let masse;
+			let epee_1;
+			let epee_2;
+			let arc;
+			
+			window.addEventListener("keydown", function (event) {
 				let newUrl = null;
 				//let ghost_right = document.querySelector(".
 				let sprite = document.querySelector(".perso");
@@ -77,8 +85,8 @@
 
 
 				console.log(event.keyCode);
-				                if (event.keyCode === 38 || event.keyCode === 90) {
-                    if(sprite !== null){
+				if (event.keyCode === 38 || event.keyCode === 90) {
+                	if(sprite !== null){
                         sprite.classList.add('perso_up');
 
                         newUrl = "http://localhost:5000/move?action=Haut";
@@ -148,10 +156,38 @@
 
 				} else if(event.keyCode === 32){
 					newUrl = "http://localhost:5000/move?action=Attaquer";
-				} else if(event.keyCode === 80){
+					if (hache === true){
+						newUrl = "http://localhost:5000/move?action=Attaquer&arme=hache";
+					}else if(epee === true){
+						newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee";
+					}else if(dague === true){
+						newUrl = "http://localhost:5000/move?action=Attaquer&arme=dague";
+					}else if(masse === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=masse";
+					}else if(epee_1 === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_1";
+					}else if(epee_2 === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_2";
+					}else if(arc === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=arc";
+					}
+				} else if(event.keyCode === 69){
 					newUrl = "http://localhost:5000/move?action=Soigner";
+				}else if(event.keyCode === 82){
+					epee = true;
+				}else if(event.keyCode === 84){
+					hache = true;
+				}else if(event.keyCode === 89){
+                    dague = true;
+				}else if(event.keyCode === 85){
+                    masse = true;
+				}else if(event.keyCode === 73){
+                    epee_1 = true;
+				}else if(event.keyCode === 79){
+                    epee_2 = true;
+				}else if(event.keyCode === 80){
+                    arc = true;
 				}
-
 				if(newUrl !== null){
 					event.preventDefault();
 					fetch(newUrl)
@@ -169,15 +205,15 @@
 								const life_enemy1 = document.getElementById("life_enemy1");
 								const potion = document.getElementById('potion');
 								var bar_life = reponse.life;
-								var bar_life_ennemy = reponse.life_enemy;
+								var bar_life_ennemy = reponse.life_enemy1;
 								console.log(bar_life);
 
 								// Assignation du nouveau HTML
 								potion.innerHTML = "x" + reponse.potion
 								perso.innerHTML = bar_life + "%";
 								life.style.width = bar_life + "%";
-								enemy1.innerHTML = bar_life_ennemy + "%";
-								life_enemy1.style.width = bar_life_ennemy + "%";
+								enemy1.innerHTML = bar_life_ennemy1 + "%";
+								life_enemy1.style.width = bar_life_ennemy1 + "%";
 							} else if(reponse.type === 'update') {
 								document.querySelector('html').innerHTML = reponse.value;
 								//window.location = reponse.value;
