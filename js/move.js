@@ -29,7 +29,7 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 	let marqueurs;
 	let page;
 	let reponse;
-	let enemy;
+	let enemy = 3;
 
 	// On fait apparaitre les ennemis que si le joueur est sur la 4ème ligne.
 	for(let i = 0; i < bfld.length; i++){
@@ -108,13 +108,16 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 				tmp = oppo[k];
 				if (tmp.x === perso.x && tmp.y === perso.y + 1){
 					target = tmp;
+					enemy = k;
 					checktarget = checktarget + 1;
 					checktarget2 = checktarget2 + 1;
 				}else if(bfld[perso.x][perso.y + 1] === " " && tmp.x === perso.x && tmp.y === perso.y + 2){
 					target = tmp;
+					enemy = k;
 					checktarget2 = checktarget2 + 1;
 				}else if(bfld[perso.x][perso.y + 1] === " " && bfld[perso.x][perso.y + 2] === " " && tmp.x === perso.x && tmp.y === perso.y + 3){
 					target = tmp;
+					enemy = k;
 					checktarget2 = checktarget2 + 1;
 				}
 			}
@@ -152,13 +155,16 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
                 tmp = oppo[k];
                 if (tmp.x === perso.x && tmp.y === perso.y - 1){
                     target = tmp;
+					enemy = k;
                     checktarget = checktarget + 1;
                     checktarget2 = checktarget2 + 1;
                 }else if(bfld[perso.x][perso.y + 1] === " " && tmp.x === perso.x && tmp.y === perso.y + 2){
                     target = tmp;
+					enemy = k;
                     checktarget2 = checktarget2 + 1;
                 }else if(bfld[perso.x][perso.y + 1] === " " && bfld[perso.x][perso.y + 2] === " " && tmp.x === perso.x && tmp.y === perso.y + 3){
                     target = tmp;
+					enemy = k;
                     checktarget2 = checktarget2 + 1;
 	    		}
             }
@@ -237,10 +243,23 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 			reponse.type = 'refresh';
 			reponse.value = map(bfld, query, oppo, heros);
 			reponse.life = heros[0].life;
-			reponse.life_enemy = oppo[0].life;
-			//if(enemy !== "undefined"){
-				reponse.potion = oppo[0].potion;
-			//}
+			
+			if(oppo.length !== 0){
+				if(enemy === 0){
+				reponse.life_enemy1 = oppo[0].life;
+				}else if(enemy === 1){
+					reponse.life_enemy1 = oppo[1].life;
+				}else if(enemy === 2){
+					reponse.life_enemy1 = oppo[2].life;
+				}else{
+					reponse.life_enemy1 = 100;
+				}
+				enemy = 3;
+			}else{
+				reponse.life_enemy1 = 100;
+			}
+
+			reponse.potion = oppo[0].potion;
 			console.log(oppo[0].life);
 			//reponse.life = attaque_ennemi(oppo, hero);
 		}else if (wave[0] === 2){
@@ -268,9 +287,23 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 		reponse.type = 'refresh';
 		reponse.value = map(bfld, query, oppo, heros);
 		reponse.life = heros[0].life;
+		
+		
 		if(oppo.length !== 0){
-			reponse.life_enemy = oppo[0].life;
+			if(enemy === 0){
+				reponse.life_enemy1 = oppo[0].life;
+			}else if(enemy === 1){
+				reponse.life_enemy1 = oppo[1].life;
+			}else if(enemy === 2){
+				reponse.life_enemy1 = oppo[2].life;
+			}else{
+				reponse.life_enemy1 = 100;
+			}
+			enemy = 3;
+		}else{
+			reponse.life_enemy1 = 100;
 		}
+
 		reponse.potion = heros[0].potion;
 		console.log(reponse.life);
 	}

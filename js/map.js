@@ -56,16 +56,30 @@ const map = function (bfld, query, oppo, heros) {
 
 				} else if(query.action === "Attaquer"){
 					if(heros[0].scry === 0){
-						html += '<div class="land"><img class="perso" src="/img/lance-left.gif" /></div>';
-					}else if(heros[0].scry === 1){
-						html += '<div class="land"><img class="perso" src="/img/lance_right.gif" /></div>';
-					
-					} else {
-						html += '<div class="land"><img class="perso" src="/img/lance_left.gif" /></div>';
+						if(query.arme === "arc"){
+							html += '<div class="land"><div class="arc_left"></div></div>';
+						}else if(query.arme === "lance"){
+							html += '<div class="land"><div class="lance_left"></div></div>';
+						}else if(query.arme === "dague"){
+							html += '<div class="land"><div class="dague_left"></div></div>';
+						}else{
+							html += '<div class="land"><div class="lance_left"></div></div>';
+						}
+					}else if (heros[0].scry === 1){
+						if(query.arme === "arc"){
+                            html += '<div class="land"><div class="arc_right"></div></div>';
+                        }else if(query.arme === "lance"){
+                            html += '<div class="land"><div class="lance_right"></div></div>';
+                        }else if(query.arme === "dague"){
+                            html += '<div class="land"><div class="dague_right"></div></div>';
+                        }else{
+                            html += '<div class="land"><div class="lance_right"></div></div>';
+                        }
+
 					}
-				} else {
+				}
+				else{
 					html += '<div class="land"><div class="perso right"></div></div>';
-					
 				}
             }else if(bfld[i][j] === "o"){
 				for(let k = 0; k < oppo.length; k++){
