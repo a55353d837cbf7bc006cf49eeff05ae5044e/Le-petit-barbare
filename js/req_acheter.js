@@ -114,7 +114,6 @@ const req_acheter = function (req, res, query, heros){
 
 	}
 	if(afficher === true){
-		console.log("entra");
 		marqueurs.erreur = "";
 		marqueurs.masse = heros[0].masse;
 		marqueurs.money = heros[0].pieces + "$";

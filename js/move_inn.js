@@ -38,26 +38,22 @@ const move_inn = function(res, req, query, grille_shop, grille_magasin) {
                 grille_shop[cx-1][cy] = "x";
                 grille_shop[cx][cy] = " ";
            } 
-//		   else if(grille_shop[cx-1][cy] === "s"){
-//		   		exit = true;
-//		   }
         }
     }else if(play === "Bas"){
         if (cx !== 11){
             if (grille_shop[cx+1][cy] === " "){
                 grille_shop[cx+1][cy] = "x";
                 grille_shop[cx][cy] = " ";
-            }else if (grille_shop[cx+1][cy] === "m"){
-                max = true;
             }
-
         }
     }else if(play === "Gauche"){
         if (cy !== 0){
             if (grille_shop[cx][cy-1] === " "){
                 grille_shop[cx][cy-1] = "x";
                 grille_shop[cx][cy] = " ";
-            }  
+            }else if(grille_shop[cx][cy-1] === "e"){
+				exit = true;
+			}	
         }
     }else if (play === "Droite"){
         if (cy !== 20){
@@ -90,17 +86,12 @@ const move_inn = function(res, req, query, grille_shop, grille_magasin) {
 //        test.type = 'update';
 //      test.value = '/req_catalog';
        
-    if(max === true){
+    if(exit === true){
 
 		test.type = 'update';
 		test.value = '/req_boutique';
 
 	} 
-//	else if(exit === true){
-//		test.type = 'update';
-//		test.value = '/req_jeu_histoire';
-//	} 
-	
 	else{
         // Aller jusqu'au magasin.
 		test.type = 'refresh';

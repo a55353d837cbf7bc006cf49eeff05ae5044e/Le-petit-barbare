@@ -12,6 +12,7 @@ const attaque_ennemi = function(oppo, heros){
 	
 	for(let i = 0; i < oppo.length; i++){
 		tmp = oppo[i];
+		checktarget = 0;
 		if(tmp.scry === 1){	
 			if (tmp.x === perso.x && tmp.y === perso.y -1){
 				checktarget = checktarget + 1;
@@ -21,18 +22,19 @@ const attaque_ennemi = function(oppo, heros){
 			}
 		}
 		if (checktarget === 1){
-			degats = Math.floor(Math.random()*10);
+			degats = Math.floor(Math.random()*15);
 			succes = Math.floor(Math.random()*3);
+			console.log(i + "degats = " + degats);
+			console.log(i + "succes = " + succes);
 			if (succes === 2){
 				perso.life = perso.life - degats;
 			}
-		}else{
-			checktarget = 0;
 		}
 	}
 
 	for(let j = 0; j < oppo.length; j++){
         tmp = oppo[j];
+		checktarget = 0;
         if(tmp.scry === 0){ 
             if (tmp.x === perso.x && tmp.y === perso.y +1){
                 checktarget = checktarget + 1;
@@ -44,11 +46,11 @@ const attaque_ennemi = function(oppo, heros){
         if (checktarget === 1){
             degats = Math.floor(Math.random()*10);
             succes = Math.floor(Math.random()*3);
-            if (succes === 2){
+            console.log(j + "degats = " + degats);
+			console.log(j + "succes = " + succes);
+			if (succes === 2){
                 perso.life = perso.life - degats;
             }
-        }else{
-            checktarget = 0;
         }
     }
     life = perso.life;

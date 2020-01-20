@@ -18,7 +18,8 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 	let tmp;
 	let target;
 	let checktarget = 0;
-	let damage;
+	let checktarget2 = 0;
+	let damage = 0;
 	let cx;
 	let cy;
 	let html;
@@ -106,24 +107,75 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 				if (tmp.x === perso.x && tmp.y === perso.y + 1){
 					target = tmp;
 					checktarget = checktarget + 1;
+					checktarget2 = checktarget2 + 1;
+				}else if(bfld[perso.x][perso.y + 1] === " " && tmp.x === perso.x && tmp.y === perso.y + 2){
+					target = tmp;
+					checktarget2 = checktarget2 + 1;
+				}else if(bfld[perso.x][perso.y + 1] === " " && bfld[perso.x][perso.y + 2] === " " && tmp.x === perso.x && tmp.y === perso.y + 3){
+					target = tmp;
+					checktarget2 = checktarget2 + 1;
 				}
 			}
 			if (checktarget === 1){
-				damage = Math.floor(Math.random()*10) + 100;
-				target.life = target.life - damage;;
+				if(query.arme === "hache" && perso.hache >=1){
+					damage = Math.floor(Math.random()*15) + 30;
+				}else if(query.arme === "dague" && perso.dague >=1){
+                    damage = Math.floor(Math.random()*30) + 35;
+				}else if(query.arme === "masse" && perso.masse >=1){
+                    damage = Math.floor(Math.random()*70) + 10;
+				}else if(query.arme === "epee_1" && perso.epee_1 >=1){
+                    damage = Math.floor(Math.random()*5) + 55;
+				}else if(query.arme === "epee_2" && perso.epee_2 >=1){
+                    damage = Math.floor(Math.random()*20) + 85;
+				}else{
+					damage = Math.floor(Math.random()*10) + 25;
+				}
+				console.log("damage = " + damage);
+				target.life = target.life - damage;
+			}if(checktarget2 === 1){
+				if(query.arme === "arc" && perso.arc >= 1){
+					damage = Math.floor(Math.random()*25) + 45;
+				}
+				target.life = target.life - damage;
 			}
-		}else if (perso.scry === 0){
-			for(let k = 0; k < oppo.length; k++){
+			
+		}else if(perso.scry === 0){
+            for(let k = 0; k < oppo.length; k++){
                 tmp = oppo[k];
                 if (tmp.x === perso.x && tmp.y === perso.y - 1){
                     target = tmp;
-					checktarget = checktarget + 1;
-                }
+                    checktarget = checktarget + 1;
+                    checktarget2 = checktarget2 + 1;
+                }else if(bfld[perso.x][perso.y + 1] === " " && tmp.x === perso.x && tmp.y === perso.y + 2){
+                    target = tmp;
+                    checktarget2 = checktarget2 + 1;
+                }else if(bfld[perso.x][perso.y + 1] === " " && bfld[perso.x][perso.y + 2] === " " && tmp.x === perso.x && tmp.y === perso.y + 3){
+                    target = tmp;
+                    checktarget2 = checktarget2 + 1;
+	    		}
             }
-			if (checktarget === 1){
-            	damage = Math.floor(Math.random()*10) + 100;
-				target.life = target.life - damage;
-			}
+            if (checktarget === 1){
+                if(query.arme === "hache" && perso.hache >=1){
+                    damage = Math.floor(Math.random()*15) + 30;
+                }else if(query.arme === "dague" && perso.dague >=1){
+                    damage = Math.floor(Math.random()*30) + 35;
+                }else if(query.arme === "masse" && perso.masse >=1){
+                    damage = Math.floor(Math.random()*70) + 10;
+                }else if(query.arme === "epee_1" && perso.epee_1 >=1){
+                    damage = Math.floor(Math.random()*5) + 55;
+                }else if(query.arme === "epee_2" && perso.epee_2 >=1){
+                    damage = Math.floor(Math.random()*20) + 85;
+                }else{
+					damage = Math.floor(Math.random()*10) + 25;
+				}
+				console.log("damage = " + damage);
+                target.life = target.life - damage;
+            }if(checktarget2 === 1){
+                if(query.arme === "arc" && perso.arc >= 1){
+                    damage = Math.floor(Math.random()*25) + 45;
+				}
+                target.life = target.life - damage;
+            }
 		}
 	}
 //	else if (play === "Soin"){
@@ -136,10 +188,8 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 	
 	dead_ennemi(bfld, oppo);
 
-	console.log(bfld);
 	console.log(heros);
 	console.log(oppo);
-	console.log(heros[0].life);
 	// === Envoi de la page HTML === //
 
 	reponse = {

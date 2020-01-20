@@ -63,7 +63,7 @@ const magasin = function (grille_magasin, query) {
 			} else if (grille_magasin[i][j] === "1") {
 				html += '<div class="land"></div>';
 			} else if(grille_magasin[i][j] === "m"){
-				html += '<div class="land">m</div>';
+				html += '<div class="land"></div>';
 			}
 		}
 
