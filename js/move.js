@@ -20,6 +20,7 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 	let checktarget = 0;
 	let checktarget2 = 0;
 	let damage = 0;
+	let at = 0;
 	let cx;
 	let cy;
 	let html;
@@ -98,9 +99,10 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 		}
 	
 	} else if(play === "Soigner"){
-		heros[0].life += 30;
+		perso.life = Math.min(perso.life + 30, 100);
 		heros[0].potion -= 1;
 	}else if (play === "Attaquer"){
+		at = 0;
 		if(perso.scry === 1){
 			for(let k = 0; k < oppo.length; k++){
 				tmp = oppo[k];
@@ -131,12 +133,18 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 					damage = Math.floor(Math.random()*10) + 25;
 				}
 				console.log("damage = " + damage);
-				target.life = target.life - damage;
+				if(at === 0){
+					target.life = target.life - damage;
+					at = 1;
+				}
 			}if(checktarget2 === 1){
 				if(query.arme === "arc" && perso.arc >= 1){
 					damage = Math.floor(Math.random()*25) + 45;
+					if(at === 0){
+						target.life = target.life - damage;
+						at = 1;
+					}
 				}
-				target.life = target.life - damage;
 			}
 			
 		}else if(perso.scry === 0){
@@ -169,12 +177,18 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 					damage = Math.floor(Math.random()*10) + 25;
 				}
 				console.log("damage = " + damage);
-                target.life = target.life - damage;
-            }if(checktarget2 === 1){
+                if(at === 0){
+					target.life = target.life - damage;
+            		at = 1;
+				}
+			}if(checktarget2 === 1){
                 if(query.arme === "arc" && perso.arc >= 1){
                     damage = Math.floor(Math.random()*25) + 45;
+					if(at ===0){
+						target.life = targer.life - damage;
+						at = 1;
+					}
 				}
-                target.life = target.life - damage;
             }
 		}
 	}
