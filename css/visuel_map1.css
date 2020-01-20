@@ -66,6 +66,44 @@
 	height: 60px;
 	width: 70px;
 }
+
+.arc_left{
+	background-image: url("/img/Arc-left.gif");
+	background-repeat: no-repeat;
+	height: 60px;
+	width: 70px;
+}
+.arc_right{
+    background-image: url("/img/Arc-right.gif");
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 70px;
+}
+
+.lance_left{
+    background-image: url("/img/lance-left.gif");
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 70px;
+}
+.lance_right{
+    background-image: url("/img/lance_right.gif");
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 70px;
+}
+.dague_left{
+    background-image: url("/img/Knif-left.gif");
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 70px;
+}
+.dague_right{
+    background-image: url("/img/Knif-right.gif");
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 70px;
+}
 .perso_right{
 	background: url('/img/test.png');
 	height: 52px; 
