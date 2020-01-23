@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <title>Entrainement</title>
+        <link rel="stylesheet" href="./css/visuel_map3.css" type="text/css">
+    </head>
+
+    <body class="body">
+        <div class="container">
+            <div class="count">
+                <div class="money">{money}</div>
+                <img class="epee" src="./img/epee.gif"><div class="txt_epee">x{epee}</div></img>
+                <img class="masse" src="./img/masse.gif"><div class="txt_masse">x{masse}</div></img>
+                <img class="belle" src="./img/belle_epee.gif"><div class="txt_belle">x{belle_epee}</div></img>
+                <img class="casse" src="./img/epee_casse.gif"><div class="txt_casse">x{epee_casse}</div></img>
+                <img class="hache" src="./img/hache.gif"><div class="txt_hache">x{hache}</div></img>
+                <img class="dague" src="./img/dague.gif"><div class="txt_dague">x{dague}</div></img>
+                <img class="arc" src="./img/arc_1.png"><div class="txt_arc" id="arc">{arc}</div></img>
+                <img class="potion" src="./img/potion_1.png"><div class="txt_potion" id="potion">{potion}</div></img>
+            </div>
+
+            <div id="player-container" class="text-border scale">
+                <div id="player-forms">
+                    <div class="name-panel">
+                        <div id="player-name-panel">{nom}</div>
+                        <div id="player-level-panel">{level}/10</div>
+                    </div>
+                    <div class="player-life-panel">
+                        <div class="life" id = "life" 
+                             style="width: {life}">
+                            <div id = "container">{life}</div>
+                        </div>
+                    </div>
+                </div>
+            <div class="text-border scale" id="enemy-container">
+                <div id="enemy-forms">
+                    <div class="enemy-life-panel">
+                        <div class="life-enemy1" id="life_enemy1" style="width: {life_enemy1}">
+                            <div id="container-enemy1">{life_enemy1}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class='bfld' id = 'bfld'>
+                {land}
+            </div>
+        </div>
+        <p/>
+        <script>
+            let epee = false;
+            let hache = false;
+            let dague =false;
+            let masse = false ;
+            let epee_1 = false;
+            let epee_2 = false;
+            let arc = false;
+            
+            window.addEventListener("keydown", function (event) {
+                let newUrl = null;
+                //let ghost_right = document.querySelector(".
+                let sprite = document.querySelector(".perso");
+                let down_left = document.querySelector(".left");
+                let down_right = document.querySelector('.right');
+                let down_up = document.querySelector('.up');
+                let left_right = document.querySelector('.right');
+                let left_down = document.querySelector('.down');
+                let left_up = document.querySelector('.up');
+                let right_left = document.querySelector('.left');
+                let right_up = document.querySelector('.up');
+                let right_down = document.querySelector('.down');
+                let up_right = document.querySelector('.right');
+                let up_left = document.querySelector('.left');
+                let up_down = document.querySelector('.down');
+
+
+                console.log(event.keyCode);
+                if (event.keyCode === 38 || event.keyCode === 90) {
+                    if(sprite !== null){
+                        sprite.classList.add('perso_up');
+
+                        newUrl = "http://localhost:5000/move?action=Haut";
+                    } else {
+                        if(up_right !== null){
+                            newUrl = "http://localhost:5000/move?action=Haut";
+                            up_right.classList.add('perso_up');
+                        } else if(up_left !== null){
+                            newUrl = "http://localhost:5000/move?action=Haut";
+                            up_left.classList.add('perso_up');
+                        } else if(up_down !== null){
+                            newUrl = "http://localhost:5000/move?action=Haut";
+                            up_down.classList.add('perso_up');
+                        }
+                    }
+                } else if(event.keyCode === 40 || event.keyCode === 83){
+                    if(sprite !== null){
+                        sprite.classList.add('perso_down');
+
+                        newUrl = "http://localhost:5000/move?action=Bas";
+                    } else {
+                        if(down_left !== null){
+                            newUrl = "http://localhost:5000/move?action=Bas";
+                            down_left.classList.add('perso_down');
+                        } else if(down_right !== null){
+                            newUrl = "http://localhost:5000/move?action=Bas";
+                            down_right.classList.add('perso_down');
+                        } else if(down_up !== null){
+                            newUrl = "http://localhost:5000/move?action=Bas";
+                            down_up.classList.add('perso_down');
+                        }
+                    }
+                } else if(event.keyCode === 39 || event.keyCode === 68){
+                    if(sprite !== null){
+                        sprite.classList.add('perso_right');
+                        newUrl = "http://localhost:5000/move?action=Droite";
+                    } else {
+                        if(right_left !== null){
+                            newUrl = "http://localhost:5000/move?action=Droite";
+
+                            right_left.classList.add('perso_right');    
+                        } else if(right_up !== null){
+                            newUrl = "http://localhost:5000/move?action=Droite";
+                            right_up.classList.add('perso_right');  
+                        } else if(right_down !== null){
+                            newUrl = "http://localhost:5000/move?action=Droite";
+                            right_down.classList.add('perso_right');    
+                        }
+                    }
+                } else if(event.keyCode === 37 || event.keyCode === 81){
+                    if(sprite !== null){
+                        sprite.classList.add('perso_left');
+
+                        newUrl = "http://localhost:5000/move?action=Gauche";
+                    } else {
+                        if(left_right !== null){
+                            newUrl = "http://localhost:5000/move?action=Gauche";
+                            left_right.classList.add('perso_left');
+                        } else if(left_up !== null){
+                            newUrl = "http://localhost:5000/move?action=Gauche";
+                            left_up.classList.add('perso_left');
+                        } else if(left_down !== null){
+                            newUrl = "http://localhost:5000/move?action=Gauche";
+                            left_down.classList.add('perso_left');
+                        }
+                    }
+
+                } else if(event.keyCode === 32){
+                    newUrl = "http://localhost:5000/move?action=Attaquer";
+                    if (hache === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=hache";
+                    }else if(epee === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee";
+                    }else if(dague === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=dague";
+                    }else if(masse === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=masse";
+                    }else if(epee_1 === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_1";
+                    }else if(epee_2 === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_2";
+                    }else if(arc === true){
+                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=arc";
+                    }
+                } else if(event.keyCode === 69){
+                    newUrl = "http://localhost:5000/move?action=Soigner";
+                }else if(event.keyCode === 82){
+                    epee = true;
+                }else if(event.keyCode === 84){
+                    hache = true;
+                }else if(event.keyCode === 89){
+                    dague = true;
+                }else if(event.keyCode === 85){
+                    masse = true;
+                }else if(event.keyCode === 73){
+                    epee_1 = true;
+                }else if(event.keyCode === 79){
+                    epee_2 = true;
+                }else if(event.keyCode === 80){
+                    arc = true;
+                    console.log(arc);
+                }
+                if(newUrl !== null){
+                    event.preventDefault();
+                    fetch(newUrl)
+                        .then(function (reponse) { return reponse.json(); })
+                        .then(function (reponse) {
+                            // Récupération de l'élément DOM
+                            if(reponse.type === 'refresh'){
+                                setTimeout(myTime, 500);
+                                function myTime(){
+                                    document.getElementById("bfld").innerHTML = reponse.value;
+                                }
+                                const perso = document.getElementById("container");
+                                const enemy1 = document.getElementById("container-enemy1");
+                                const life = document.getElementById("life");
+                                const life_enemy1 = document.getElementById("life_enemy1");
+                                const potion = document.getElementById('potion');
+                                const arc1 = document.getElementById('arc');
+                                var bar_life = reponse.life;
+                                var bar_life_ennemy = reponse.life_enemy1;
+                                console.log(bar_life);
+
+                                // Assignation du nouveau HTML
+                                potion.innerHTML = "x" + reponse.potion;
+                               arc1.innerHTML = "x" + reponse.arc;
+                                perso.innerHTML = bar_life + "%";
+                                life.style.width = bar_life + "%";
+                                enemy1.innerHTML = bar_life_ennemy + "%";
+                                life_enemy1.style.width = bar_life_ennemy + "%";
+                            } else if(reponse.type === 'update') {
+                                document.querySelector('html').innerHTML = reponse.value;
+                                //window.location = reponse.value;
+                            }
+                    
+                        });
+                }
+            });
+        </script>
+    </body>
+</html>
+

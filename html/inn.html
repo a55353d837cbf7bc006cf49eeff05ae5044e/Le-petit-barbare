@@ -7,22 +7,38 @@
     </head>
 
     <body class="body">
+		{erreur}
+		<div class="container">
+			<div class="money">Pièces: {money}$</div>
+			<div class="life">Life: {life}PV</div>
+		</div>
         <div class='grille' id = 'grille'>
             {land}
         </div>
 
 		<script>
+			function url(){
+				document.getElementById('manger').innerHTML = '<form action="/req_shop" method="GET"><label id="texte1">Soupe: 5$ Plus 30pv</label><button id="bouton1" name="action" value="manger">Manger</button></form>';
+			}
+			function boire(){
+				document.getElementById('boire').innerHTML = '<form action="/req_shop" method="GET"><label id="texte1">Whiskey: 7$ Plus 40pv</label><button id="bouton1" name="action" value="boire">Boire</button></form>';
+			}
             window.addEventListener("keydown", function (event) {
                 let newUrl = null;
                 console.log(event.keyCode);
+				let sprite = document.querySelector(".perso");
                 if (event.keyCode === 90 || event.keyCode === 38) {
 					console.log('oui');
+					sprite.classList.add('perso_up');
                     newUrl = "http://localhost:5000/move_inn?action=Haut";
                 } else if(event.keyCode === 83 || event.keyCode === 40){
+					sprite.classList.add('perso_down');
                     newUrl = "http://localhost:5000/move_inn?action=Bas";
                 } else if(event.keyCode === 68 || event.keyCode === 39 ){
+					sprite.classList.add('perso_right');
                     newUrl = "http://localhost:5000/move_inn?action=Droite";
                 } else if(event.keyCode === 81 || event.keyCode === 37 ){
+					sprite.classList.add('perso_left');
                     newUrl = "http://localhost:5000/move_inn?action=Gauche";
 				} else if(event.keyCode === 32){
 					newUrl = "http://localhost:5000/move_inn?action=Interaction";
@@ -34,12 +50,15 @@
                         .then(function (test) {
                             // Récupération de l'élément DOM
                             if(test.type === 'refresh'){
-                                const element = document.getElementById("grille");
-                                // Assignation du nouveau HTML
-                                element.innerHTML = test.value;
+                                 function timed (){setTimeout(myTime, 299);
+                                console.log("ok");
+                               }
+                               timed();
+                                function myTime(){
+                                    document.getElementById("grille").innerHTML = test.value;
+                                }
                             } else if(test.type === 'update') {
                                 window.location = test.value;
-                                console.log(test.value);
                             }
                     
                         });

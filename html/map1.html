@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 	<head>
 		<meta charset="UTF-8"> 
@@ -9,13 +10,13 @@
 		<div class="container">
 			<div class="count">
 				<div class="money">{money}</div>
-				<img class="epee" src="./img/epee.gif"><div class="txt_epee">x{epee}</div></img>
-				<img class="masse" src="./img/masse.gif"><div class="txt_masse">x{masse}</div></img>
-				<img class="belle" src="./img/belle_epee.gif"><div class="txt_belle">x{belle_epee}</div></img>
-				<img class="casse" src="./img/epee_casse.gif"><div class="txt_casse">x{epee_casse}</div></img>
-				<img class="hache" src="./img/hache.gif"><div class="txt_hache">x{hache}</div></img>
-				<img class="dague" src="./img/dague.gif"><div class="txt_dague">x{dague}</div></img>
-				<img class="arc" src="./img/arc_1.png"><div class="txt_arc">x{arc}</div></img>
+				<img class="epee" src="./img/epee.gif"><div id="epee" class="txt_epee">{epee}</div></img>
+				<img class="masse" src="./img/masse.gif"><div id="masse" class="txt_masse">{masse}</div></img>
+				<img class="belle" src="./img/belle_epee.gif"><div id="belle" class="txt_belle">{belle_epee}</div></img>
+				<img class="casse" src="./img/epee_casse.gif"><div id="casse" class="txt_casse">{epee_casse}</div></img>
+				<img class="hache" src="./img/hache.gif"><div id="hache" class="txt_hache">{hache}</div></img>
+				<img class="dague" src="./img/dague.gif"><div id="dague" class="txt_dague">{dague}</div></img>
+				<img class="arc" src="./img/arc_1.png"><div class="txt_arc" id="arc">{arc}</div></img>
 				<img class="potion" src="./img/potion_1.png"><div class="txt_potion" id="potion">{potion}</div></img>
 			</div>
 
@@ -38,11 +39,6 @@
 						<div class="life-enemy1" id="life_enemy1" style="width: {life_enemy1}">
 							<div id="container-enemy1">{life_enemy1}</div>
 						</div>
-					<!--
-						<div class="life-enemy1" id="life-enemy1"
-						     style="width: {life_enemy1}">
-						<div id="container-enemy1">{life_enemy1}</div>
-						-->
 					</div>
 				</div>
 			</div>
@@ -51,20 +47,15 @@
 				{land}
 			</div>
 		</div>
-
-<!--		<form action="/req_debuter" method="GET">
-            <input id="input" type="submit" name="action" value="Retour accueil jeu">
-        </form>
--->
         <p/>
         <script>
-            let epee;
-			let hache;
-			let dague;
-			let masse;
-			let epee_1;
-			let epee_2;
-			let arc;
+            let epee = false;
+			let hache = false;
+			let dague =false;
+			let masse = false ;
+			let epee_1 = false;
+			let epee_2 = false;
+			let arc = false;
 			
 			window.addEventListener("keydown", function (event) {
 				let newUrl = null;
@@ -81,7 +72,7 @@
                 let right_down = document.querySelector('.down');
                 let up_right = document.querySelector('.right');
                 let up_left = document.querySelector('.left');
-                let uo_down = document.querySelector('.down');
+                let up_down = document.querySelector('.down');
 
 
 				console.log(event.keyCode);
@@ -187,6 +178,7 @@
                     epee_2 = true;
 				}else if(event.keyCode === 80){
                     arc = true;
+					console.log(arc);
 				}
 				if(newUrl !== null){
 					event.preventDefault();
@@ -204,16 +196,25 @@
 								const life = document.getElementById("life");
 								const life_enemy1 = document.getElementById("life_enemy1");
 								const potion = document.getElementById('potion');
+								const arc1 = document.getElementById('arc');
+								const masse = document.getElementById('masse');
 								var bar_life = reponse.life;
 								var bar_life_ennemy = reponse.life_enemy1;
 								console.log(bar_life);
+								document.getElementById('epee').innerHTML = "x" + reponse.epee;
+								document.getElementById('hache').innerHTML = "x" + reponse.hache;
+								document.getElementById('belle').innerHTML = "x" + reponse.belle;
+								document.getElementById('casse').innerHTML = "x" + reponse.casse;
+								document.getElementById('dague').innerHTML = "x" +reponse.dague;
 
 								// Assignation du nouveau HTML
-								potion.innerHTML = "x" + reponse.potion
+								potion.innerHTML = "x" + reponse.potion;
+								arc1.innerHTML = "x" + reponse.arc;
+								masse.innerHTML = "x" + reponse.masse;
 								perso.innerHTML = bar_life + "%";
 								life.style.width = bar_life + "%";
-								enemy1.innerHTML = bar_life_ennemy1 + "%";
-								life_enemy1.style.width = bar_life_ennemy1 + "%";
+								enemy1.innerHTML = bar_life_ennemy + "%";
+								life_enemy1.style.width = bar_life_ennemy + "%";
 							} else if(reponse.type === 'update') {
 								document.querySelector('html').innerHTML = reponse.value;
 								//window.location = reponse.value;

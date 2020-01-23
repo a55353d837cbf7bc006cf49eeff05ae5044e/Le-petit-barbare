@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Aller a la boutique</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="./CSS/visuel_palier.css" type="text/css">
 	</head>
-	<body>
+	<body class="body"><center>
 
-		<h2>Bravo, vous avez survecu, et vous etes desormais au niveau {level} </h2>
+		<h2 id="txt">Bravo ! Vous avez gagné la bataille !! mais pas la guerre. Vous êtes desormais au niveau {level} </h2>
 
 		{erreur}
-
-	
 		
 	    <form action="/req_boutique" method="GET">
-            <button name="action" value="shop">Cliquer ici pour passer a la boutique</button>
+            <button id="bouton" name="action" value="shop">Aller à la boutique</button>
         </form>
 
 
 		<form action="/req_debuter" method="GET">
-            <button name="action" value="accueil mode jeu">Cliquer ici pour retourner a l'accueil</button>
+            <button id="bouton" name="action" value="accueil mode jeu">Retourner a l'accueil</button>
         </form>
+		<img class="main" src="/img/main.gif"></div>
 
 		<p/>
 
-	</body>
+	</body></center>
 </html>

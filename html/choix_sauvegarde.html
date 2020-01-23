@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<title>Sauvegarde</title>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="./css/visuel_sauvegarde.css" type="text/css">
     </head>
-    <body>
-        <h2>Saluda</h2>
+    <body><center>
+		{erreur}
+		<div class="cadre">
+        	<h2>Choix sauvgarde</h2>
+
+			<p/>
 
 
-        <form action="/req_load" method="GET">
-            <button name="action" value="load1">Cliquer ici pour charger la sauvegarde 1</button>
-        </form>
+        	<form action="/req_load" method="GET">
+            	<button id="bouton" name="action" value="load1">Sauvegarde 1</button>
+        	</form>
 
-		<form action="/req_load" method="GET">
-            <button name="action" value="load2">Cliquer ici pour charger la sauvegarde 2</button>
-        </form>
+			<form action="/req_load" method="GET">
+            	<button id="bouton" name="action" value="load2">Sauvegarde 2</button>
+        	</form>
 
+			<form action="/req_load" method="GET">
+				<button id="bouton" name="action" value="load2">Sauvegarde 3</button>
+            </form>
 
-    </body>
+			<p/>
+		</div>
+
+    </body></center>
 </html>
-~      
+      
