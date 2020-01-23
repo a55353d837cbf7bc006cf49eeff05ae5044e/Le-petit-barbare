@@ -10,17 +10,42 @@
 	position: absolute;
 	top: 50%; left: 50%;
 	transform: translate(-50%, -50%);
-	width: 1360px;
+	width: 1270px;
 	height: 556px;
 	margin: 0px;
-	border: 0px solid black;
 	background-image: url("/maps/45-inn.png");
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-position: center;
 }
 .grille-ligne {
 	display: flex;
 	flex-direction: row;
+}
+.container{
+	z-index: 100;
+    position: absolute;
+    top: 70%; left: -1%;
+    transform: translate(20%, 10%);
+    width: 100px;
+    height: 80px;
+    background-color: rgb(145,  145, 145);
+    border-radius: 20px;
+    border-style: double;
+
+}
+.money{
+	margin-top: 10px;
+	font-size: 15px;
+	text-align: center;
+	font-family: "Algerian";
+}
+.life{
+	margin-top: 7px;
+    font-size: 15px;
+    text-align: center;
+    font-family: "Algerian";
+
 }
 .case{
 	float: left;
@@ -73,7 +98,7 @@
 	from { background-position: 0 0; }
 	to { background-position: 0 -993px;
 		transition: transform 12s linear;
-		transform: translate3d(44px, 0, 100px);
+		transform: translate3d(52px, 0, 100px);
 	}
 }
 
@@ -81,7 +106,7 @@
 	from { background-position: 0 0; }
 	to { background-position: 0 -993px;
 		transition: transform 12s linear;
-		transform: translate3d(44px, 0, 100px);
+		transform: translate3d(52px, 0, 100px);
 	}
 }
 
@@ -89,7 +114,7 @@
 	from { background-position: 0 0; }
 	to { background-position: 0 -993px;
 		transition: transform 12s linear;
-		transform: translate3d(44px, 0, 100px);
+		transform: translate3d(52px, 0, 100px);
 	}
 }
 
@@ -97,7 +122,7 @@
 	from { background-position: 0 0; }
 	to { background-position: 0 -993px;
 		transition: transform 12s linear;
-		transform: translate3d(44px, 0, 100px);
+		transform: translate3d(52px, 0, 100px);
 	}
 }
 .perso_left{
@@ -115,14 +140,14 @@
 	from { background-position: 0 0; }
 	to { background-position: -593px 0;
 		transition: transform 12s linear;
-		transform: translate3d(-33px, 0px, 0px);
+		transform: translate3d(-45px, 0px, 0px);
 	}
 }
 @-ms-keyframes sprite {
 	from { background-position: 0 0; }
 	to { background-position: -593px 0;
 		transition: transform 12s linear;
-		transform: translate3d(-33px, 0px, 0px);
+		transform: translate3d(-45px, 0px, 0px);
 	}
 }
 
@@ -130,7 +155,7 @@
 	from { background-position: 0 0; }
 	to { background-position: -593px 0;
 		transition: transform 12s linear;
-		transform: translate3d(-33px, 0px, 0px);
+		transform: translate3d(-45px, 0px, 0px);
 	}
 }
 
@@ -138,7 +163,7 @@
 	from { background-position: 0 0; }
 	to { background-position: -593px 0;
 		transition: transform 12s linear;
-		transform: translate3d(-33px, 0px, 0px);
+		transform: translate3d(-45px, 0px, 0px);
 	}
 }
 .perso_up{
@@ -156,7 +181,7 @@
 	from { background-position: 0 0; }
 	to { background-position: 0 -640px;
 		transition: transform 12s linear;
-		transform: translate3d(0px, -43px, 0px);
+		transform: translate3d(0px, -48px, 0px);
 	}
 }
 
@@ -164,7 +189,7 @@
 	from { background-position: 0 0; }
 	to { background-position: 0 -640px;
 		transition: transform 12s linear;
-		transform: translate3d(0px, -43px, 0px);
+		transform: translate3d(0px, -48px, 0px);
 	}
 }
 
@@ -172,7 +197,7 @@
 	from { background-position: 0 0; }
 	to { background-position: 0 -640px;
 		transition: transform 12s linear;
-		transform: translate3d(0px, -43px, 0px);
+		transform: translate3d(0px, -48px, 0px);
 	}
 }
 
@@ -180,7 +205,7 @@
 	from { background-position: 0 0; }
 	to { background-position: 0 -640px;
 		transition: transform 12s linear;
-		transform: translate3d(0px, -43px, 0px);
+		transform: translate3d(0px, -48px, 0px);
 	}
 }
 
@@ -227,9 +252,32 @@
     height: 185px;
     margin: 0px;
     border: 0px solid black;
-    background-image: url("img/parchemin.png");
+    background-image: url("/img/parchemin.png");
     background-size: cover;
     background-repeat: no-repeat;
+}
+.table_save{
+    position: absolute;
+    left: 690px; top: 380px;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 185px;
+    margin: 0px;
+    border: 0px solid black;
+    background-image: url("/img/parchemin.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+	background-position: center;
+}
+#texte_save{
+	position: absolute;
+    top: 30px; left:0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 21px;
+    font-family: "Blackadder ITC";
+
 }
 #texte{
 	position: absolute;
@@ -239,6 +287,16 @@
 	text-align: center;
 	font-size:28px;
 	font-family: "Blackadder ITC";
+}
+#texte1{
+	position: absolute;
+    top: 25px; left:0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size:30px;
+    font-family: "Blackadder ITC";
+
 }
 #bouton{
 	position: absolute;
@@ -253,14 +311,30 @@
 	border-radius: 8px;
 	cursor: pointer;
 }
-.table_eat{
+#bouton1{
     position: absolute;
-    right: -75px; top: 100px;
+    top: 110px; left:40px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size:18px;
+    font-family: "Blackadder ITC";
+    width: 80px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+.table_eat{
+	float: left;
+    position: absolute;
+    right: 160px; top: 100px;
     transform: translate(-50%, -50%);
     width: 150px;
+	display: table-cell;
     height: 185px;
     margin: 0px;
-    border: 0px solid black;
+	vertical-align: center;
     background-image: url("/img/parchemin.png");
     background-size: cover;
     background-repeat: no-repeat;

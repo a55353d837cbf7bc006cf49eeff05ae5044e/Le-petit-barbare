@@ -6,14 +6,22 @@
  #input{
 	cursor: pointer;
 }
+#bouton{
+	z-index: 10;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: rgb(176, 176, 176);
+	font-size: 15px;
+	font-family: "Algerian";
+	margin-left: 20px;
+}
 .shop {
 	position: absolute;
-	top: 50%; left: 50%;
+	top: 48%; left: 48%;
 	transform: translate(-50%, -50%);
-	width: 1360px;
+	width: 1270px;
 	height: 556px;
 	margin: 25px;
-	border: 2px solid white;
 	background-image: url("/maps/44-magasin.png");
 	background-size: cover;
 	background-repeat: no-repeat;

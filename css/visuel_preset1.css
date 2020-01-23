@@ -1,5 +1,24 @@
 body {
-    background-image: url('/maps/preset1.png');
+	background-color: black;
+    }
+.container {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1270px;
+    height: 560px;
+	background-image: url('/maps/preset1.png');
     background-size: cover;
     background-repeat: no-repeat;
+	background-position: center;
 }
+#bouton{
+	margin: 25px;
+	border-radius: 5px;
+	box-shadow: rgb(176, 176, 176);
+	font-size: 20px;
+	font-family: "Algerian";
+	width: 45px;
+    height: 35px;
+}
+
