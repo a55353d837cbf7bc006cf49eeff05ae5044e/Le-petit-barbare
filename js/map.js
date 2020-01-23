@@ -32,48 +32,48 @@ const map = function (bfld, query, oppo, heros) {
 					if(bfld[cx-1][cy] === " "){
 						html += '<div class="land"><div class="perso up"></div></div>';
 					} else {
-						html += '<div class="land"><div class="up"></div></div>';
+						html += '<div class="land"><div class="perso up"></div></div>';
 					}
 				} else if(query.action === "Bas"){
 					if(bfld[cx+1][cy] === " "){
 						html += '<div class="land"><div class="perso down"></div></div>';
 					} else {
-						html += '<div class="land"><div class="down"></div></div>';
+						html += '<div class="land"><div class="perso down"></div></div>';
 					}
 				} else if(query.action === "Gauche"){
 					if(bfld[cx][cy-1] === " "){
 						html += '<div class="land"><div class="perso left"></div></div>';
 					} else { 
-                        html += '<div class="land"><div class="left"></div></div>';
+                        html += '<div class="land"><div class="perso left"></div></div>';
                     }
 
 				} else if(query.action === "Droite"){
 					if(bfld[cx][cy+1] === " "){
 						html += '<div class="land"><div class="perso right"></div></div>';
 					}else { 
-                        html += '<div class="land"><div class="right"></div></div>';
+                        html += '<div class="land"><div class="perso right"></div></div>';
                     }
 
 				} else if(query.action === "Attaquer"){
 					if(heros[0].scry === 0){
 						if(query.arme === "arc"){
-							html += '<div class="land"><div class="arc_left"></div></div>';
+							html += '<div class="land"><div class="perso arc_left"></div></div>';
 						}else if(query.arme === "lance"){
-							html += '<div class="land"><div class="lance_left"></div></div>';
+							html += '<div class="land"><div class="perso lance_left"></div></div>';
 						}else if(query.arme === "dague"){
-							html += '<div class="land"><div class="dague_left"></div></div>';
+							html += '<div class="land"><div class="perso dague_left"></div></div>';
 						}else{
-							html += '<div class="land"><div class="lance_left"></div></div>';
+							html += '<div class="land"><div class="perso lance_left"></div></div>';
 						}
 					}else if (heros[0].scry === 1){
 						if(query.arme === "arc"){
-                            html += '<div class="land"><div class="arc_right"></div></div>';
+                            html += '<div class="land"><div class="perso arc_right"></div></div>';
                         }else if(query.arme === "lance"){
-                            html += '<div class="land"><div class="lance_right"></div></div>';
+                            html += '<div class="land"><div class="perso lance_right"></div></div>';
                         }else if(query.arme === "dague"){
-                            html += '<div class="land"><div class="dague_right"></div></div>';
+                            html += '<div class="land"><div class="perso dague_right"></div></div>';
                         }else{
-                            html += '<div class="land"><div class="lance_right"></div></div>';
+                            html += '<div class="land"><div class="perso lance_right"></div></div>';
                         }
 
 					}

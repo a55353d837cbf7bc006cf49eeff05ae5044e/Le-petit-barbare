@@ -17,6 +17,8 @@ const move_inn = function(res, req, query, grille_shop, grille_magasin) {
     let cy;
     let max = false;
 	let exit = false;
+//	let save = false;
+
 	
 //	console.log(grille_shop);
 
@@ -34,7 +36,6 @@ const move_inn = function(res, req, query, grille_shop, grille_magasin) {
     if (play === "Haut"){
        if (cx !== 0){
 			if (grille_shop[cx-1][cy] === " "){
-				console.log('haut');
                 grille_shop[cx-1][cy] = "x";
                 grille_shop[cx][cy] = " ";
            } 
@@ -51,7 +52,7 @@ const move_inn = function(res, req, query, grille_shop, grille_magasin) {
             if (grille_shop[cx][cy-1] === " "){
                 grille_shop[cx][cy-1] = "x";
                 grille_shop[cx][cy] = " ";
-            }else if(grille_shop[cx][cy-1] === "e"){
+            }else if(grille_shop[cx][cy-1] === "o"){
 				exit = true;
 			}	
         }
@@ -62,37 +63,27 @@ const move_inn = function(res, req, query, grille_shop, grille_magasin) {
                 grille_shop[cx][cy] = " ";
             }
 		}
-    }
-//	else if(play === "Interaction"){
-//		if(grille_shop[cx-1][cy] === "l"){
-//			act = "loot";
-//		}else if(grille_shop[cx-1][cy] === "s"){
-//			act = "save";
-//		}else if(grille_shop[cx-1][cy] === "e"){
-//			act = "eat";
-//		}else if(grille_shop[cx-1][cy] === "d" || grille_shop[cx][cy+1] === "d"){
-//			act = "drink";
+//   } else if(play === "Interaction"){
+//		if(grille_shop[cx-1][cy] === "s"){
+//			save = true;
 //		}
-//	}
-
+	}
     test = {
         "type" : "",
         "value" : "",
     };
     marqueurs = {};
 
-//    if(buy === true){
-		
-//        test.type = 'update';
-//      test.value = '/req_catalog';
-       
+      
     if(exit === true){
 
 		test.type = 'update';
 		test.value = '/req_boutique';
 
-	} 
-	else{
+//	} else if(save === true){
+//		test.type = "update";
+//		test.value = "/req_sauvegarde";
+	} else{
         // Aller jusqu'au magasin.
 		test.type = 'refresh';
         test.value = shop(grille_shop, query);

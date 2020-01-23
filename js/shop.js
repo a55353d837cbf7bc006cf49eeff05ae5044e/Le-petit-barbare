@@ -26,10 +26,46 @@ const interieur_magasin = function (grille_shop, query) {
         html += '<div class="grille-ligne">';
 		for(j=0; j<grille_shop[i].length; j++){
 			if(grille_shop[i][j] === " "){
-                html += '<div class="case">1</div>';
+                html += '<div class="case"></div>';
 
             } else if (grille_shop[i][j] === "x") {
-                html += '<div class="case"><img class="perso" src="hero.gif"></div>';
+				if(query.action === "Haut"){
+                    if(grille_shop[cx-1][cy] === " "){
+                        html += '<div class="case"><div class="perso up"></div></div>';
+                    } else {
+                        html += '<div class="case"><div class="perso up"></div></div>';
+                    }
+                } else if(query.action === "Bas"){
+                    if(grille_shop[cx+1][cy] === " "){
+                        html += '<div class="case"><div class="perso down"></div></div>';
+                    } else {
+                        html += '<div class="case"><div class="perso down"></div></div>';
+                    }
+                } else if(query.action === "Gauche"){
+                    if(grille_shop[cx][cy-1] === " "){
+                        html += '<div class="case"><div class="perso left"></div></div>';
+                    } else {
+                        html += '<div class="case"><div class="perso left"></div></div>';
+                    }
+
+                } else if(query.action === "Droite"){
+                    if(grille_shop[cx][cy+1] === " "){
+                        html += '<div class="case"><div class="perso right"></div></div>';
+                    }else {
+                        html += '<div class="case"><div class="perso right"></div></div>';
+                    }
+				} else if(query.action === "Interaction"){
+					if(grille_shop[cx][cy+1] === "d"){
+						console.log("ok");
+						 html += '<div class="case"><div class="perso right"></div></div>';
+					} else if(grille_shop[cx-1][cy] === "e" || grille_shop[cx-1][cy] === "l"){
+						html += '<div class="case"><div class="perso up"></div></div>';
+					} else {
+						html += '<div class="case"><div class="perso up"></div></div>';
+					}
+                } else {
+					html += '<div class="case"><div class="perso up"></div></div>';
+				}
 			} else if (grille_shop[i][j] === "1") {
                 html += '<div class="case"></div>';
             } else if(grille_shop[i][j] === "l"){
@@ -41,37 +77,55 @@ const interieur_magasin = function (grille_shop, query) {
 						html += '<button name="action" value="oui" id="bouton">Oui</button>';
 						html += '</form>';
 						html += '</div>';
+					 
+					} else {
+                		html += '<div class="case"></div>';
 					}
 				} else {
-                	html += '<div class="case"></div>';
+					html += '<div class="case"></div>';
 				}
             } else if(grille_shop[i][j] === "s"){
-				html += '<div class="case">s</div>';
+				if(query.action === 'Interaction'){
+                    if(grille_shop[cx-1][cy] === "s"){
+                        html += '<div class="table_save">';
+						html += '<form action="/req_shop" method="GET">';
+                        html += '<label id="texte_save">Voulez-vous sauvegarder la partie?</label>';
+                        html += '<button name="action" value="save" id="bouton">Oui</button>';
+						html += '</form>';
+                        html += '</div>';
+
+                    } else { 
+                        html += '<div class="case"></div>';
+                    }
+                } else {
+					html += '<div class="case"></div>';
+				}
 			} else if(grille_shop[i][j] === "e"){
 				if(query.action === 'Interaction'){
 					if(grille_shop[cx-1][cy] === "e"){
-						html += '<div class="table_eat">';
-						html += '<form action="/req_acheter" method="GET">';
+						html += '<div class="table_eat" id="manger">';
 						html += '<label id="texte">Voulez-vous manger?</label>';
-						html += '<button name="action" value="oui" id="bouton">Oui</button>';
-						html += '</form>';
+						html += '<button onclick="url()" id="bouton">Oui</button>';
 						html += '</div>';
-					}
-                } else { 
-                    html += '<div class="case">e</div>';
-                }
+					
+                	} else { 
+                    	html += '<div class="case"></div>';
+                	}
+				} else {
+					html += '<div class="case"></div>';
+				}
 			} else if(grille_shop[i][j] === "d"){
 				if(query.action === 'Interaction'){
 					if(grille_shop[cx][cy+1] === "d"){
-						html += '<div class="table_drink">';
-						html += '<form action="/req_acheter" method="GET">';
+						html += '<div class="table_drink" id="boire">';
 						html += '<label id="texte">Voulez-vous boire?</label>';
-						html += '<button name="action" value="oui" id="bouton">Oui</button>';
-						html += '</form>';
+						html += '<button onclick="boire()" id="bouton">Oui</button>';
 						html += '</div>';
+					} else {
+						html += '<div class="case"></div>';
 					}
-                } else { 
-                    html += '<div class="case">d</div>';
+                } else {
+                    html += '<div class="case"></div>';
                 }
 			}  
 

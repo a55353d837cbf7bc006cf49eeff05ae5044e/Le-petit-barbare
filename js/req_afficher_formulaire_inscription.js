@@ -8,7 +8,7 @@ const trait = function (req, res, query) {
 	let marqueurs;
 	let page;
 
-	page = fs.readFileSync('modele_formulaire_inscription.html', 'utf-8');
+	page = fs.readFileSync('./html/modele_formulaire_inscription.html', 'utf-8');
 
 	marqueurs = {};
 	marqueurs.erreur = "";

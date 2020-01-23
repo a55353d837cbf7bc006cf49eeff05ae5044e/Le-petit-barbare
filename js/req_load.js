@@ -10,7 +10,7 @@ const req_load = function (req, res, query, bfld, heros, oppo, wave, niveau, sav
 	let tmp = {"x" : 3, "y" : 2, "life" : 100, "scry" : 1, "epee" : 1, "hache" : 0, "dague" : 0, "masse" : 0, "potion" : 2, "epee_1": 0, "epee_2": 0, "arc" : 0, "pieces" : 100};
 
 	console.log("le niveau est " + niveau[0]);
-	console.log("la save est " + save2[0]);
+	console.log(save);
 
 	if(query.action === "load1"){
 		niveau[0] = save[0];
@@ -47,6 +47,8 @@ const req_load = function (req, res, query, bfld, heros, oppo, wave, niveau, sav
 		}
 	}
 	console.log(niveau[0]);
+	console.log("la save2 est " + save2[0]);
+	console.log("la save est " + save[0]);
 
 	req_jeu_histoire(req, res, query, bfld, heros, oppo, wave, niveau, nom);
 };

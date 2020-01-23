@@ -23,13 +23,13 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 	let at = 0;
 	let cx;
 	let cy;
-	let html;
 	let ennemi;
 	let money;
 	let marqueurs;
 	let page;
 	let reponse;
 	let enemy = 3;
+	let save = false;
 
 	// On fait apparaitre les ennemis que si le joueur est sur la 4ème ligne.
 	for(let i = 0; i < bfld.length; i++){
@@ -123,14 +123,19 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 			}
 			if (checktarget === 1){
 				if(query.arme === "hache" && perso.hache >=1){
+					heros[0].hache -=1;
 					damage = Math.floor(Math.random()*15) + 30;
 				}else if(query.arme === "dague" && perso.dague >=1){
+					heros[0].dague -= 1;
                     damage = Math.floor(Math.random()*30) + 35;
 				}else if(query.arme === "masse" && perso.masse >=1){
+					heros[0].masse -= 1;
                     damage = Math.floor(Math.random()*70) + 10;
 				}else if(query.arme === "epee_1" && perso.epee_1 >=1){
+					heros[0].epee_1 -= 1;
                     damage = Math.floor(Math.random()*5) + 55;
 				}else if(query.arme === "epee_2" && perso.epee_2 >=1){
+					heros[0].epee_2 -= 1;
                     damage = Math.floor(Math.random()*20) + 85;
 				}else{
 					damage = Math.floor(Math.random()*10) + 25;
@@ -143,6 +148,7 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 			}if(checktarget2 === 1){
 				if(query.arme === "arc" && perso.arc >= 1){
 					damage = Math.floor(Math.random()*25) + 45;
+					heros[0].arc -= 1;
 					if(at === 0){
 						target.life = target.life - damage;
 						at = 1;
@@ -170,14 +176,19 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
             }
             if (checktarget === 1){
                 if(query.arme === "hache" && perso.hache >=1){
+					heros[0].hache -= 1;
                     damage = Math.floor(Math.random()*15) + 30;
                 }else if(query.arme === "dague" && perso.dague >=1){
+					heros[0].dague -= 1;
                     damage = Math.floor(Math.random()*30) + 35;
                 }else if(query.arme === "masse" && perso.masse >=1){
+					heros[0].masse -= 1;
                     damage = Math.floor(Math.random()*70) + 10;
                 }else if(query.arme === "epee_1" && perso.epee_1 >=1){
+					heros[0].epee_1 -= 1;
                     damage = Math.floor(Math.random()*5) + 55;
                 }else if(query.arme === "epee_2" && perso.epee_2 >=1){
+					heros[0].epee_2 -= 1;
                     damage = Math.floor(Math.random()*20) + 85;
                 }else{
 					damage = Math.floor(Math.random()*10) + 25;
@@ -189,6 +200,7 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 				}
 			}if(checktarget2 === 1){
                 if(query.arme === "arc" && perso.arc >= 1){
+					heros[0].arc -= 1;
                     damage = Math.floor(Math.random()*25) + 45;
 					if(at ===0){
 						target.life = targer.life - damage;
@@ -198,13 +210,6 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
             }
 		}
 	}
-//	else if (play === "Soin"){
-
-//	}else if (play === "Huile"){
-
-//	}else if (play === "Dague"){
-
-//	}
 	
 	dead_ennemi(bfld, oppo);
 
@@ -216,9 +221,6 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 		"type" : "",
 		"value" : "",
 	};
-//	if(oppo[0] !== "undefined"){
-//		enemy = oppo[0].life;
-//	}
 	marqueurs = {};
 
 	if(perso.life <= 0){
@@ -230,15 +232,14 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 
 		reponse.type = 'update';
 		reponse.value = page.supplant(marqueurs);
-	}else if(oppo.length === 0 && wave[0]!== 0){
+
+	} else if(oppo.length === 0 && wave[0]!== 0){
 		wave[0] = wave[0] + 1;
 		if (wave[0] < 2){
 			// Vague suivante (dans le même niveau).
 			ennemi = pop_ennemi(bfld);
 			oppo.push(...ennemi);
 
-			//page = fs.readFileSync('map.html', 'utf-8');
-			//marqueurs.land = map(bfld);
 
 			reponse.type = 'refresh';
 			reponse.value = map(bfld, query, oppo, heros);
@@ -259,18 +260,24 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 				reponse.life_enemy1 = 100;
 			}
 
-			reponse.potion = oppo[0].potion;
-			console.log(oppo[0].life);
-			//reponse.life = attaque_ennemi(oppo, hero);
+			reponse.potion = heros[0].potion;
+			reponse.arc = heros[0].arc;
+			reponse.masse = heros[0].masse;
+			reponse.hache = heros[0].hache;
+			reponse.epee = heros[0].epee;
+			reponse.belle = heros[0].epee_1;
+			reponse.casse = heros[0].epee_2;
+			reponse.dague = heros[0].dague;
+
 		}else if (wave[0] === 2){
 			// Niveau suivant.
-			money = Math.floor(Math.random()*10 + niveau[0]);
+			money = Math.floor(Math.random()*30 + niveau[0]);
 			heros[0].pieces = heros[0].pieces + money;
     		niveau[0] = niveau[0] + 1;
 			
-			if(niveau[0]%2 === 0){
+			if(niveau[0]%2 === 0 && niveau[0] !== 6){
 				page = fs.readFileSync('./html/palier.html', 'utf-8');
-			}else if(niveau[0]%2 === 1 && niveau[0]!== 3){
+			}else if(niveau[0]%2 === 1 || niveau[0]=== 3 || niveau[0] === 5){
 				page = fs.readFileSync('./html/palier2.html', 'utf-8');
 			}else{
 				page = fs.readFileSync('./html/win.html', 'utf-8');
@@ -282,8 +289,6 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 		}
 	}else{
 		// Continuer le jeu.
-		//page = fs.readFileSync('map.html', 'utf-8');
-		//marqueurs.land = map(bfld);
 		reponse.type = 'refresh';
 		reponse.value = map(bfld, query, oppo, heros);
 		reponse.life = heros[0].life;
@@ -305,7 +310,13 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 		}
 
 		reponse.potion = heros[0].potion;
-		console.log(reponse.life);
+		reponse.arc = heros[0].arc;
+		reponse.masse = heros[0].masse;
+		reponse.hache = heros[0].hache;
+		reponse.epee = heros[0].epee;
+		reponse.belle = heros[0].epee_1;
+		reponse.casse = heros[0].epee_2;
+		reponse.dague = heros[0].dague;
 	}
 
 	res.writeHead(200, {'Content-Type' : 'application/json'});

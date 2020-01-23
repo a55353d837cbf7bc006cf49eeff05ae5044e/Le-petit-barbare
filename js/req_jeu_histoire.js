@@ -21,9 +21,6 @@ const req_jeu_histoire = function (req, res, query, bfld, heros, oppo, wave, niv
 		heros[0].y = 2;
 	}	
 
-//	let tmp2 = heros[0];
-//	tmp2.x = 1;
-//	tmp2.y = 1;
 	
 	for(let i = 1; i < bfld.length - 1; i ++){
 		for(let j = 1; j< bfld[0].length - 1; j++){
@@ -44,8 +41,6 @@ const req_jeu_histoire = function (req, res, query, bfld, heros, oppo, wave, niv
 		
 	console.log(bfld);
 	console.log(niveau);
-    console.log(tmp.life);
-
 	
 	let n = niveau[0];
 	page = fs.readFileSync("./html/map" + n +".html", "utf-8");
@@ -57,14 +52,14 @@ const req_jeu_histoire = function (req, res, query, bfld, heros, oppo, wave, niv
 		marqueurs.life_enemy1 = "";
 	}
 
-	marqueurs.masse = heros[0].masse;
+	marqueurs.masse = "x" + heros[0].masse;
 	marqueurs.money = heros[0].pieces + "$";
-	marqueurs.dague = heros[0].dague;
-	marqueurs.epee = heros[0].epee;
-	marqueurs.hache = heros[0].hache;
-	marqueurs.belle_epee = heros[0].epee_1;
-	marqueurs.epee_casse = heros[0].epee_2;
-	marqueurs.arc = heros[0].arc;
+	marqueurs.dague = "x" + heros[0].dague;
+	marqueurs.epee = "x" + heros[0].epee;
+	marqueurs.hache = "x" + heros[0].hache;
+	marqueurs.belle_epee = "x" + heros[0].epee_1;
+	marqueurs.epee_casse = "x" +  heros[0].epee_2;
+	marqueurs.arc = "x" + heros[0].arc;
 	marqueurs.potion = "x" + heros[0].potion;
 	marqueurs.land = map(bfld, query, oppo, heros);
 	marqueurs.life = heros[0].life + "%";

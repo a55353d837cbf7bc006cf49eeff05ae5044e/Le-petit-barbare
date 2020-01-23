@@ -9,7 +9,7 @@ const req_accueil_sauvegarde = function (req, res, query, heros, niveau){
 	let page;
 	let marqueurs;
 
-	page = fs.readFileSync('sauvegarde.html', 'utf-8');
+	page = fs.readFileSync('./html/sauvegarde.html', 'utf-8');
 
 	marqueurs = {};
 	marqueurs.erreur = "";
