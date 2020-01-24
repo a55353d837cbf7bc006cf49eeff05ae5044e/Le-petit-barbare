@@ -1,0 +1,116 @@
+"use strict";
+
+const map_survie = function (bfld, query, oppo, heros) {
+
+    let html;
+    let i;
+    let j;
+    let a;
+    let b;
+    let cx;
+    let cy;
+    let tmp;
+
+	for(a = 0; a < bfld.length; a++){
+        for(b = 0; b < bfld[a].length; b++){
+            if(bfld[a][b] === "x"){
+                cx = a;
+                cy = b;
+            }
+        }
+    }
+
+    html = '';
+
+    for (i = 0; i < bfld.length; i++) {
+        html += '<div class="ligne">';
+        for (j = 0; j < bfld[i].length; j++) {
+            if (bfld[i][j] === " " || bfld[i][j] === "1"){
+                html += '<div class="land"></div>';
+            }else if(bfld[i][j] === "x"){
+                if(query.action === "Haut"){
+					if(bfld[cx-1][cy] === " "){
+                        html += '<div class="land"><div class="perso up"></div></div>';
+                    } else {
+                        html += '<div class="land"><div class="perso up"></div></div>';
+                    }
+                } else if(query.action === "Bas"){
+                    if(bfld[cx+1][cy] === " "){
+                        html += '<div class="land"><div class="perso down"></div></div>';
+                    } else {
+                        html += '<div class="land"><div class="perso down"></div></div>';
+                    }
+                } else if(query.action === "Gauche"){
+                    if(bfld[cx][cy-1] === " "){
+                        html += '<div class="land"><div class="perso left"></div></div>';
+                    } else {
+                        html += '<div class="land"><div class="perso left"></div></div>';
+                    }
+
+       			} else if(query.action === "Droite"){
+                    if(bfld[cx][cy+1] === " "){
+                        html += '<div class="land"><div class="perso right"></div></div>';
+                    }else {
+                        html += '<div class="land"><div class="perso right"></div></div>';
+                    }
+
+				} else if(query.action === "Attaquer"){
+                    if(heros[0].scry === 0){
+                        if(query.arme === "lance") {
+                        html += '<div class="land"><img class="perso" src="/img/lance-left.gif" /></div>';
+                        }else if(query.arme === "epee") {
+                            html += '<div class="land"><img class="perso" src="/img/Knif-left.gif" /></div>';
+                        }else {
+                            html += '<div class="land"><img class="perso" src="/img/Knif-left.gif" /></div>';
+                        }
+                    }else if(heros[0].scry === 1){
+                        if(query.arme === "lance") {
+                            html += '<div class="land"><img class="perso" src="/img/lance_right.gif" /></div>';
+
+                        }else if(query.arme === "epee") {
+                             html += '<div class="land"><img class="perso" src="/img/Knif-right.gif" /></div>';
+                        } else {
+                            html += '<div class="land"><img class="perso" src="/img/Knif-right.gif" /></div>';
+                        }
+					}
+                } else {
+                    html += '<div class="land"><div class="perso right"></div></div>';
+
+                }
+			}else if(bfld[i][j] === "o"){
+                for(let k = 0; k < oppo.length; k++){
+                    if(oppo[k].x === i && oppo[k].y === j){
+                        tmp = oppo[k];
+                    }
+                }
+			if(typeof tmp !== "undefined") {
+			
+				if(tmp.scry === 0){
+                    if(tmp.attaque_l === "oui"){
+                        html += '<div class="land"><div class="ghost_attaque_left"></div></div>';
+                    } else {
+                        html += '<div class="land"><div class="ghost gauche"></div></div>';
+                    }
+
+				}else if(tmp.scry === 1){
+                    if(tmp.attaque_r === "oui"){
+                        html += '<div class="land"><div class="ghost_attaque_right"></div></div>';
+                    } else {
+                        html += '<div class="land"><div class="ghost droite"></div></div>';
+                    	}
+                	}
+				}else {
+					html+= "";
+				}
+            }
+		
+
+       
+	   }
+        html += '</div>';
+    }
+
+    return html;
+};
+
+module.exports = map_survie;
