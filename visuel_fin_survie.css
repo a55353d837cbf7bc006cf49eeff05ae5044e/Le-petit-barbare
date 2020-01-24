@@ -1,0 +1,9 @@
+body{
+    background-image : url("/img/6.gif");
+    background-repeat : no-repeat;
+    background-size: cover;
+    font-family : "Algerian";
+    font-size : 30px;
+	color :white;
+}
+
