@@ -24,7 +24,7 @@
 				<div id="player-forms">
 					<div class="name-panel">
 						<div id="player-name-panel">{nom}</div>
-						<div id="player-level-panel">{level}/6</div>
+						<div id="player-level-panel">{level}</div>
 					</div>
 					<div class="player-life-panel">
 						<div class="life" id = "life" 
@@ -80,16 +80,16 @@
                 	if(sprite !== null){
                         sprite.classList.add('perso_up');
 
-                        newUrl = "http://localhost:5000/move?action=Haut";
+                        newUrl = "http://localhost:5000/move_survie?action=Haut";
                     } else {
                         if(up_right !== null){
-                            newUrl = "http://localhost:5000/move?action=Haut";
+                            newUrl = "http://localhost:5000/move_survie?action=Haut";
                             up_right.classList.add('perso_up');
                         } else if(up_left !== null){
-                            newUrl = "http://localhost:5000/move?action=Haut";
+                            newUrl = "http://localhost:5000/move_survie?action=Haut";
                             up_left.classList.add('perso_up');
                         } else if(up_down !== null){
-                            newUrl = "http://localhost:5000/move?action=Haut";
+                            newUrl = "http://localhost:5000/move_survie?action=Haut";
                             up_down.classList.add('perso_up');
                         }
                     }
@@ -97,33 +97,33 @@
                     if(sprite !== null){
                         sprite.classList.add('perso_down');
 
-                        newUrl = "http://localhost:5000/move?action=Bas";
+                        newUrl = "http://localhost:5000/move_survie?action=Bas";
                     } else {
                         if(down_left !== null){
-                            newUrl = "http://localhost:5000/move?action=Bas";
+                            newUrl = "http://localhost:5000/move_survie?action=Bas";
                             down_left.classList.add('perso_down');
                         } else if(down_right !== null){
-                            newUrl = "http://localhost:5000/move?action=Bas";
+                            newUrl = "http://localhost:5000/move_survie?action=Bas";
                             down_right.classList.add('perso_down');
                         } else if(down_up !== null){
-                            newUrl = "http://localhost:5000/move?action=Bas";
+                            newUrl = "http://localhost:5000/move_survie?action=Bas";
                             down_up.classList.add('perso_down');
                         }
                     }
                 } else if(event.keyCode === 39 || event.keyCode === 68){
                     if(sprite !== null){
                         sprite.classList.add('perso_right');
-                        newUrl = "http://localhost:5000/move?action=Droite";
+                        newUrl = "http://localhost:5000/move_survie?action=Droite";
                     } else {
                         if(right_left !== null){
-                            newUrl = "http://localhost:5000/move?action=Droite";
+                            newUrl = "http://localhost:5000/move_survie?action=Droite";
 
                             right_left.classList.add('perso_right');    
                         } else if(right_up !== null){
-                            newUrl = "http://localhost:5000/move?action=Droite";
+                            newUrl = "http://localhost:5000/move_survie?action=Droite";
                             right_up.classList.add('perso_right');  
                         } else if(right_down !== null){
-                            newUrl = "http://localhost:5000/move?action=Droite";
+                            newUrl = "http://localhost:5000/move_survie?action=Droite";
                             right_down.classList.add('perso_right');    
                         }
                     }
@@ -131,40 +131,40 @@
                     if(sprite !== null){
                         sprite.classList.add('perso_left');
 
-                        newUrl = "http://localhost:5000/move?action=Gauche";
+                        newUrl = "http://localhost:5000/move_survie?action=Gauche";
                     } else {
                         if(left_right !== null){
-                            newUrl = "http://localhost:5000/move?action=Gauche";
+                            newUrl = "http://localhost:5000/move_survie?action=Gauche";
                             left_right.classList.add('perso_left');
                         } else if(left_up !== null){
-                            newUrl = "http://localhost:5000/move?action=Gauche";
+                            newUrl = "http://localhost:5000/move_survie?action=Gauche";
                             left_up.classList.add('perso_left');
                         } else if(left_down !== null){
-                            newUrl = "http://localhost:5000/move?action=Gauche";
+                            newUrl = "http://localhost:5000/move_survie?action=Gauche";
                             left_down.classList.add('perso_left');
                         }
                     }
 
 				} else if(event.keyCode === 32){
 					if (hache === true){
-						newUrl = "http://localhost:5000/move?action=Attaquer&arme=hache";
+						newUrl = "http://localhost:5000/move_survie?action=Attaquer&arme=hache";
 					}else if(epee === true){
-						newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee";
+						newUrl = "http://localhost:5000/move_survie?action=Attaquer&arme=epee";
 					}else if(dague === true){
-						newUrl = "http://localhost:5000/move?action=Attaquer&arme=dague";
+						newUrl = "http://localhost:5000/move_survie?action=Attaquer&arme=dague";
 					}else if(masse === true){
-                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=masse";
+                        newUrl = "http://localhost:5000/move_survie?action=Attaquer&arme=masse";
 					}else if(epee_1 === true){
-                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_1";
+                        newUrl = "http://localhost:5000/move_survie?action=Attaquer&arme=epee_1";
 					}else if(epee_2 === true){
-                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_2";
+                        newUrl = "http://localhost:5000/move_survie?action=Attaquer&arme=epee_2";
 					}else if(arc === true){
-                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=arc";
+                        newUrl = "http://localhost:5000/move_survie?action=Attaquer&arme=arc";
 					}else{
-						newUrl = "http://localhost:5000/move?action=Attaquer";
+						newUrl = "http://localhost:5000/move_survie?action=Attaquer";
 					}
 				} else if(event.keyCode === 69){
-					newUrl = "http://localhost:5000/move?action=Soigner";
+					newUrl = "http://localhost:5000/move_survie?action=Soigner";
 				}else if(event.keyCode === 82){
 					epee = true;
 				}else if(event.keyCode === 65){

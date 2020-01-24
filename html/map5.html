@@ -3,19 +3,19 @@
 	<head>
 		<meta charset="UTF-8"> 
 		<title>Entrainement</title>
-		<link rel="stylesheet" href="./css/visuel_map1.css" type="text/css">
+		<link rel="stylesheet" href="./css/visuel_map5.css" type="text/css">
 	</head>
 
 	<body class="body">
 		<div class="container">
 			<div class="count">
 				<div class="money">{money}</div>
-				<img class="epee" src="./img/epee.gif"><div class="txt_epee">x{epee}</div></img>
-				<img class="masse" src="./img/masse.gif"><div class="txt_masse">x{masse}</div></img>
-				<img class="belle" src="./img/belle_epee.gif"><div class="txt_belle">x{belle_epee}</div></img>
-				<img class="casse" src="./img/epee_casse.gif"><div class="txt_casse">x{epee_casse}</div></img>
-				<img class="hache" src="./img/hache.gif"><div class="txt_hache">x{hache}</div></img>
-				<img class="dague" src="./img/dague.gif"><div class="txt_dague">x{dague}</div></img>
+				<img class="epee" src="./img/epee.gif"><div id="epee" class="txt_epee">{epee}</div></img>
+				<img class="masse" src="./img/masse.gif"><div id="masse" class="txt_masse">{masse}</div></img>
+				<img class="belle" src="./img/belle_epee.gif"><div id="belle" class="txt_belle">{belle_epee}</div></img>
+				<img class="casse" src="./img/epee_casse.gif"><div id="casse" class="txt_casse">{epee_casse}</div></img>
+				<img class="hache" src="./img/hache.gif"><div id="hache" class="txt_hache">{hache}</div></img>
+				<img class="dague" src="./img/dague.gif"><div id="dague" class="txt_dague">{dague}</div></img>
 				<img class="arc" src="./img/arc_1.png"><div class="txt_arc" id="arc">{arc}</div></img>
 				<img class="potion" src="./img/potion_1.png"><div class="txt_potion" id="potion">{potion}</div></img>
 			</div>
@@ -24,7 +24,7 @@
 				<div id="player-forms">
 					<div class="name-panel">
 						<div id="player-name-panel">{nom}</div>
-						<div id="player-level-panel">{level}/10</div>
+						<div id="player-level-panel">{level}/6</div>
 					</div>
 					<div class="player-life-panel">
 						<div class="life" id = "life" 
@@ -146,7 +146,6 @@
                     }
 
 				} else if(event.keyCode === 32){
-					newUrl = "http://localhost:5000/move?action=Attaquer";
 					if (hache === true){
 						newUrl = "http://localhost:5000/move?action=Attaquer&arme=hache";
 					}else if(epee === true){
@@ -161,11 +160,15 @@
                         newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_2";
 					}else if(arc === true){
                         newUrl = "http://localhost:5000/move?action=Attaquer&arme=arc";
+					}else{
+						newUrl = "http://localhost:5000/move?action=Attaquer";
 					}
 				} else if(event.keyCode === 69){
 					newUrl = "http://localhost:5000/move?action=Soigner";
 				}else if(event.keyCode === 82){
 					epee = true;
+				}else if(event.keyCode === 65){
+					lance = true;
 				}else if(event.keyCode === 84){
 					hache = true;
 				}else if(event.keyCode === 89){
@@ -197,13 +200,20 @@
 								const life_enemy1 = document.getElementById("life_enemy1");
 								const potion = document.getElementById('potion');
 								const arc1 = document.getElementById('arc');
+								const masse = document.getElementById('masse');
 								var bar_life = reponse.life;
 								var bar_life_ennemy = reponse.life_enemy1;
 								console.log(bar_life);
+								document.getElementById('epee').innerHTML = "x" + reponse.epee;
+								document.getElementById('hache').innerHTML = "x" + reponse.hache;
+								document.getElementById('belle').innerHTML = "x" + reponse.belle;
+								document.getElementById('casse').innerHTML = "x" + reponse.casse;
+								document.getElementById('dague').innerHTML = "x" +reponse.dague;
 
 								// Assignation du nouveau HTML
 								potion.innerHTML = "x" + reponse.potion;
 								arc1.innerHTML = "x" + reponse.arc;
+								masse.innerHTML = "x" + reponse.masse;
 								perso.innerHTML = bar_life + "%";
 								life.style.width = bar_life + "%";
 								enemy1.innerHTML = bar_life_ennemy + "%";

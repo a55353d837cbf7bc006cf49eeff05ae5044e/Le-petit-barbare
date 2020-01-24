@@ -18,10 +18,13 @@
 
 		<script>
 			function url(){
-				document.getElementById('manger').innerHTML = '<form action="/req_shop" method="GET"><label id="texte1">Soupe: 5$ Plus 30pv</label><button id="bouton1" name="action" value="manger">Manger</button></form>';
+				document.getElementById('manger').innerHTML = '<form action="/req_shop" method="GET"><label id="texte1">:Sanglier rôti 15$ + 50pv</label><button id="bouton1" name="action" value="manger">Manger</button></form>';
 			}
 			function boire(){
-				document.getElementById('boire').innerHTML = '<form action="/req_shop" method="GET"><label id="texte1">Whiskey: 7$ Plus 40pv</label><button id="bouton1" name="action" value="boire">Boire</button></form>';
+				document.getElementById('boire').innerHTML = '<form action="/req_shop" method="GET"><label id="texte1">Whisky: 7$ + 20pv</label><button id="bouton1" name="action" value="boire">Boire</button></form>';
+			}
+			function save(){
+				document.getElementById('save').innerHTML = '<form action="req_shop" method="GET"><label id="texte_save">Choisissez la sauvegarde</label><button id="bouton1" name="action" value="save1">Save1</button><button id="bouton2" name="action" value="save2">Save2</button></form>';
 			}
             window.addEventListener("keydown", function (event) {
                 let newUrl = null;

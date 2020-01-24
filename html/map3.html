@@ -1,67 +1,67 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8"> 
-        <title>Entrainement</title>
-        <link rel="stylesheet" href="./css/visuel_map3.css" type="text/css">
-    </head>
+	<head>
+		<meta charset="UTF-8"> 
+		<title>Entrainement</title>
+		<link rel="stylesheet" href="./css/visuel_map3.css" type="text/css">
+	</head>
 
-    <body class="body">
-        <div class="container">
-            <div class="count">
-                <div class="money">{money}</div>
-                <img class="epee" src="./img/epee.gif"><div class="txt_epee">x{epee}</div></img>
-                <img class="masse" src="./img/masse.gif"><div class="txt_masse">x{masse}</div></img>
-                <img class="belle" src="./img/belle_epee.gif"><div class="txt_belle">x{belle_epee}</div></img>
-                <img class="casse" src="./img/epee_casse.gif"><div class="txt_casse">x{epee_casse}</div></img>
-                <img class="hache" src="./img/hache.gif"><div class="txt_hache">x{hache}</div></img>
-                <img class="dague" src="./img/dague.gif"><div class="txt_dague">x{dague}</div></img>
-                <img class="arc" src="./img/arc_1.png"><div class="txt_arc" id="arc">{arc}</div></img>
-                <img class="potion" src="./img/potion_1.png"><div class="txt_potion" id="potion">{potion}</div></img>
-            </div>
+	<body class="body">
+		<div class="container">
+			<div class="count">
+				<div class="money">{money}</div>
+				<img class="epee" src="./img/epee.gif"><div id="epee" class="txt_epee">{epee}</div></img>
+				<img class="masse" src="./img/masse.gif"><div id="masse" class="txt_masse">{masse}</div></img>
+				<img class="belle" src="./img/belle_epee.gif"><div id="belle" class="txt_belle">{belle_epee}</div></img>
+				<img class="casse" src="./img/epee_casse.gif"><div id="casse" class="txt_casse">{epee_casse}</div></img>
+				<img class="hache" src="./img/hache.gif"><div id="hache" class="txt_hache">{hache}</div></img>
+				<img class="dague" src="./img/dague.gif"><div id="dague" class="txt_dague">{dague}</div></img>
+				<img class="arc" src="./img/arc_1.png"><div class="txt_arc" id="arc">{arc}</div></img>
+				<img class="potion" src="./img/potion_1.png"><div class="txt_potion" id="potion">{potion}</div></img>
+			</div>
 
-            <div id="player-container" class="text-border scale">
-                <div id="player-forms">
-                    <div class="name-panel">
-                        <div id="player-name-panel">{nom}</div>
-                        <div id="player-level-panel">{level}/10</div>
-                    </div>
-                    <div class="player-life-panel">
-                        <div class="life" id = "life" 
-                             style="width: {life}">
-                            <div id = "container">{life}</div>
-                        </div>
-                    </div>
-                </div>
-            <div class="text-border scale" id="enemy-container">
-                <div id="enemy-forms">
-                    <div class="enemy-life-panel">
-                        <div class="life-enemy1" id="life_enemy1" style="width: {life_enemy1}">
-                            <div id="container-enemy1">{life_enemy1}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <div class='bfld' id = 'bfld'>
-                {land}
-            </div>
-        </div>
+			<div id="player-container" class="text-border scale">
+				<div id="player-forms">
+					<div class="name-panel">
+						<div id="player-name-panel">{nom}</div>
+						<div id="player-level-panel">{level}/6</div>
+					</div>
+					<div class="player-life-panel">
+						<div class="life" id = "life" 
+							 style="width: {life}">
+							<div id = "container">{life}</div>
+						</div>
+					</div>
+				</div>
+			<div class="text-border scale" id="enemy-container">
+				<div id="enemy-forms">
+					<div class="enemy-life-panel">
+						<div class="life-enemy1" id="life_enemy1" style="width: {life_enemy1}">
+							<div id="container-enemy1">{life_enemy1}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class='bfld' id = 'bfld'>
+				{land}
+			</div>
+		</div>
         <p/>
         <script>
             let epee = false;
-            let hache = false;
-            let dague =false;
-            let masse = false ;
-            let epee_1 = false;
-            let epee_2 = false;
-            let arc = false;
-            
-            window.addEventListener("keydown", function (event) {
-                let newUrl = null;
-                //let ghost_right = document.querySelector(".
-                let sprite = document.querySelector(".perso");
-                let down_left = document.querySelector(".left");
+			let hache = false;
+			let dague =false;
+			let masse = false ;
+			let epee_1 = false;
+			let epee_2 = false;
+			let arc = false;
+			
+			window.addEventListener("keydown", function (event) {
+				let newUrl = null;
+				//let ghost_right = document.querySelector(".
+				let sprite = document.querySelector(".perso");
+				let down_left = document.querySelector(".left");
                 let down_right = document.querySelector('.right');
                 let down_up = document.querySelector('.up');
                 let left_right = document.querySelector('.right');
@@ -75,9 +75,9 @@
                 let up_down = document.querySelector('.down');
 
 
-                console.log(event.keyCode);
-                if (event.keyCode === 38 || event.keyCode === 90) {
-                    if(sprite !== null){
+				console.log(event.keyCode);
+				if (event.keyCode === 38 || event.keyCode === 90) {
+                	if(sprite !== null){
                         sprite.classList.add('perso_up');
 
                         newUrl = "http://localhost:5000/move?action=Haut";
@@ -145,78 +145,87 @@
                         }
                     }
 
-                } else if(event.keyCode === 32){
-                    newUrl = "http://localhost:5000/move?action=Attaquer";
-                    if (hache === true){
-                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=hache";
-                    }else if(epee === true){
-                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee";
-                    }else if(dague === true){
-                        newUrl = "http://localhost:5000/move?action=Attaquer&arme=dague";
-                    }else if(masse === true){
+				} else if(event.keyCode === 32){
+					if (hache === true){
+						newUrl = "http://localhost:5000/move?action=Attaquer&arme=hache";
+					}else if(epee === true){
+						newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee";
+					}else if(dague === true){
+						newUrl = "http://localhost:5000/move?action=Attaquer&arme=dague";
+					}else if(masse === true){
                         newUrl = "http://localhost:5000/move?action=Attaquer&arme=masse";
-                    }else if(epee_1 === true){
+					}else if(epee_1 === true){
                         newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_1";
-                    }else if(epee_2 === true){
+					}else if(epee_2 === true){
                         newUrl = "http://localhost:5000/move?action=Attaquer&arme=epee_2";
-                    }else if(arc === true){
+					}else if(arc === true){
                         newUrl = "http://localhost:5000/move?action=Attaquer&arme=arc";
-                    }
-                } else if(event.keyCode === 69){
-                    newUrl = "http://localhost:5000/move?action=Soigner";
-                }else if(event.keyCode === 82){
-                    epee = true;
-                }else if(event.keyCode === 84){
-                    hache = true;
-                }else if(event.keyCode === 89){
+					}else{
+						newUrl = "http://localhost:5000/move?action=Attaquer";
+					}
+				} else if(event.keyCode === 69){
+					newUrl = "http://localhost:5000/move?action=Soigner";
+				}else if(event.keyCode === 82){
+					epee = true;
+				}else if(event.keyCode === 65){
+					lance = true;
+				}else if(event.keyCode === 84){
+					hache = true;
+				}else if(event.keyCode === 89){
                     dague = true;
-                }else if(event.keyCode === 85){
+				}else if(event.keyCode === 85){
                     masse = true;
-                }else if(event.keyCode === 73){
+				}else if(event.keyCode === 73){
                     epee_1 = true;
-                }else if(event.keyCode === 79){
+				}else if(event.keyCode === 79){
                     epee_2 = true;
-                }else if(event.keyCode === 80){
+				}else if(event.keyCode === 80){
                     arc = true;
-                    console.log(arc);
-                }
-                if(newUrl !== null){
-                    event.preventDefault();
-                    fetch(newUrl)
-                        .then(function (reponse) { return reponse.json(); })
-                        .then(function (reponse) {
-                            // Récupération de l'élément DOM
-                            if(reponse.type === 'refresh'){
-                                setTimeout(myTime, 500);
-                                function myTime(){
-                                    document.getElementById("bfld").innerHTML = reponse.value;
-                                }
-                                const perso = document.getElementById("container");
-                                const enemy1 = document.getElementById("container-enemy1");
-                                const life = document.getElementById("life");
-                                const life_enemy1 = document.getElementById("life_enemy1");
-                                const potion = document.getElementById('potion');
-                                const arc1 = document.getElementById('arc');
-                                var bar_life = reponse.life;
-                                var bar_life_ennemy = reponse.life_enemy1;
-                                console.log(bar_life);
+					console.log(arc);
+				}
+				if(newUrl !== null){
+					event.preventDefault();
+					fetch(newUrl)
+						.then(function (reponse) { return reponse.json(); })
+						.then(function (reponse) {
+							// Récupération de l'élément DOM
+							if(reponse.type === 'refresh'){
+								setTimeout(myTime, 500);
+								function myTime(){
+									document.getElementById("bfld").innerHTML = reponse.value;
+								}
+								const perso = document.getElementById("container");
+								const enemy1 = document.getElementById("container-enemy1");
+								const life = document.getElementById("life");
+								const life_enemy1 = document.getElementById("life_enemy1");
+								const potion = document.getElementById('potion');
+								const arc1 = document.getElementById('arc');
+								const masse = document.getElementById('masse');
+								var bar_life = reponse.life;
+								var bar_life_ennemy = reponse.life_enemy1;
+								console.log(bar_life);
+								document.getElementById('epee').innerHTML = "x" + reponse.epee;
+								document.getElementById('hache').innerHTML = "x" + reponse.hache;
+								document.getElementById('belle').innerHTML = "x" + reponse.belle;
+								document.getElementById('casse').innerHTML = "x" + reponse.casse;
+								document.getElementById('dague').innerHTML = "x" +reponse.dague;
 
-                                // Assignation du nouveau HTML
-                                potion.innerHTML = "x" + reponse.potion;
-                               arc1.innerHTML = "x" + reponse.arc;
-                                perso.innerHTML = bar_life + "%";
-                                life.style.width = bar_life + "%";
-                                enemy1.innerHTML = bar_life_ennemy + "%";
-                                life_enemy1.style.width = bar_life_ennemy + "%";
-                            } else if(reponse.type === 'update') {
-                                document.querySelector('html').innerHTML = reponse.value;
-                                //window.location = reponse.value;
-                            }
-                    
-                        });
-                }
-            });
+								// Assignation du nouveau HTML
+								potion.innerHTML = "x" + reponse.potion;
+								arc1.innerHTML = "x" + reponse.arc;
+								masse.innerHTML = "x" + reponse.masse;
+								perso.innerHTML = bar_life + "%";
+								life.style.width = bar_life + "%";
+								enemy1.innerHTML = bar_life_ennemy + "%";
+								life_enemy1.style.width = bar_life_ennemy + "%";
+							} else if(reponse.type === 'update') {
+								document.querySelector('html').innerHTML = reponse.value;
+								//window.location = reponse.value;
+							}
+					
+						});
+				}
+			});
         </script>
-    </body>
+	</body>
 </html>
-
