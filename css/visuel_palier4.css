@@ -3,12 +3,10 @@ body {
 	}
 .container {
 	position: absolute;
-	width: 1360px;
-	height: 570px;
-	background-image: url('/maps/story2.png');
-	background-size: cover;
+	width: 98%;
+	height: 98%;
+	background-image: url('/maps/niveau4.png');
 	background-repeat: no-repeat;
-	background-position: center;
 }
 #bouton{
 	margin: 5px;

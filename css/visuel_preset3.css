@@ -1,13 +1,13 @@
 body {
 	background-color: black;
- }
+    }
 .container {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 1360px;
     height: 560px;
-    background-image: url('/maps/preset2.png');
+	background-image: url('/maps/preset3.png');
     background-size: cover;
     background-repeat: no-repeat;
 	background-position: center;
@@ -19,5 +19,6 @@ body {
 	font-size: 20px;
 	font-family: "Algerian";
 	width: 45px;
-	height: 35px;
+    height: 35px;
 }
+
