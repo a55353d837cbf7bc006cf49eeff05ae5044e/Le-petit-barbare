@@ -19,13 +19,12 @@ const req_load = function (req, res, query, bfld, heros, oppo, wave, niveau, sav
 			tmp.epee = save[2];
 			tmp.hache = save[3];
 			tmp.dague = save[4];
-			tmp.huile = save[5];
-			tmp.masse = save[6];
-			tmp.potion = save[7];
-			tmp.epee_1 = save[8];
-			tmp.epee_2 = save[9];
-			tmp.arc = save[10];
-			tmp.pieces = save[11];
+			tmp.masse = save[5];
+			tmp.potion = save[6];
+			tmp.epee_1 = save[7];
+			tmp.epee_2 = save[8];
+			tmp.arc = save[9];
+			tmp.pieces = save[10];
 			heros.push(tmp);
 		}
 	}else if(query.action === "load2"){
@@ -36,13 +35,12 @@ const req_load = function (req, res, query, bfld, heros, oppo, wave, niveau, sav
             tmp.epee = save2[2];
             tmp.hache = save2[3];
             tmp.dague = save2[4];
-            tmp.huile = save2[5];
-			tmp.masse = save2[6];
-            tmp.potion = save2[7];
-            tmp.epee_1 = save2[8];
-            tmp.epee_2 = save2[9];
-            tmp.arc = save2[10];
-            tmp.pieces = save2[11];
+			tmp.masse = save2[5];
+            tmp.potion = save2[6];
+            tmp.epee_1 = save2[7];
+            tmp.epee_2 = save2[8];
+            tmp.arc = save2[9];
+            tmp.pieces = save2[10];
 			heros.push(tmp);
 		}
 	}

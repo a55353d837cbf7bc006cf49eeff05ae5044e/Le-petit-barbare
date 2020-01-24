@@ -12,7 +12,7 @@ const req_jeu_histoire = function (req, res, query, bfld, heros, oppo, wave, niv
 	
 	let marqueurs;
 	let page;
-	let tmp = {"x" : 3, "y" : 2, "life" : 100, "scry" : 1, "epee" : 1, "hache" : 0, "dague" : 1, "masse" : 0, "potion" : 2, "epee_1": 0, "epee_2": 0, "arc" : 1, "pieces" : 100};
+	let tmp = {"x" : 3, "y" : 2, "life" : 100, "scry" : 1, "epee" : 0, "hache" : 0, "dague" : 0, "masse" : 0, "potion" : 0, "epee_1": 0, "epee_2": 0, "arc" : 0, "pieces" : 0};
 	if(niveau[0] === 1){
 		heros.splice(0, 1);
 		heros.push(tmp);

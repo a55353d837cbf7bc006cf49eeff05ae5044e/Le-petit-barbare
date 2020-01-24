@@ -56,21 +56,17 @@ const map = function (bfld, query, oppo, heros) {
 
 				} else if(query.action === "Attaquer"){
 					if(heros[0].scry === 0){
-						if(query.arme === "arc"){
+						if(query.arme === "arc" && heros[0].arc>=1){
 							html += '<div class="land"><div class="perso arc_left"></div></div>';
-						}else if(query.arme === "lance"){
-							html += '<div class="land"><div class="perso lance_left"></div></div>';
-						}else if(query.arme === "dague"){
+						}else if(query.arme === "dague" && heros[0].dague>=1){
 							html += '<div class="land"><div class="perso dague_left"></div></div>';
 						}else{
 							html += '<div class="land"><div class="perso lance_left"></div></div>';
 						}
 					}else if (heros[0].scry === 1){
-						if(query.arme === "arc"){
+						if(query.arme === "arc" && heros[0].arc>=1){
                             html += '<div class="land"><div class="perso arc_right"></div></div>';
-                        }else if(query.arme === "lance"){
-                            html += '<div class="land"><div class="perso lance_right"></div></div>';
-                        }else if(query.arme === "dague"){
+                        }else if(query.arme === "dague" && heros[0].dague>=1){
                             html += '<div class="land"><div class="perso dague_right"></div></div>';
                         }else{
                             html += '<div class="land"><div class="perso lance_right"></div></div>';

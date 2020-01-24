@@ -33,6 +33,31 @@ const trait = function (req, res, query) {
 		nouveauMembre = {};
 		nouveauMembre.pseudo = query.pseudo;
 		nouveauMembre.password = query.password;
+		nouveauMembre.sauvegarde1 = "1";
+		nouveauMembre.pv1 = "100";
+		nouveauMembre.epee1 = "0";
+		nouveauMembre.hache1 = "0";
+		nouveauMembre.dague1 = "0";
+		nouveauMembre.masse1 = "0";
+		nouveauMembre.potion1 = "0";
+		nouveauMembre.epee_1_1 = "0";
+		nouveauMembre.epee_2_1 = "0";
+		nouveauMembre.arc1 = "0";
+		nouveauMembre.pieces1 = "0";
+
+		nouveauMembre.sauvegarde2 = "1";
+        nouveauMembre.pv2 = "100";
+        nouveauMembre.epee2 = "0";
+        nouveauMembre.hache2 = "0";
+        nouveauMembre.dague2 = "0";
+        nouveauMembre.masse2 = "0";
+        nouveauMembre.potion2 = "0";
+        nouveauMembre.epee_1_2 = "0";
+        nouveauMembre.epee_2_2 = "0";
+        nouveauMembre.arc2 = "0";
+        nouveauMembre.pieces2 = "0";
+
+
 		listeMembres[listeMembres.length] = nouveauMembre;
 
 		contenu_fichier = JSON.stringify(listeMembres);

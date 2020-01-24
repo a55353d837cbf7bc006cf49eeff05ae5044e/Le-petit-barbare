@@ -68,7 +68,9 @@ const interieur_magasin = function (grille_shop, query) {
 				}
 			} else if (grille_shop[i][j] === "1") {
                 html += '<div class="case"></div>';
-            } else if(grille_shop[i][j] === "l"){
+			}else if(grille_shop[i][j] === "o"){
+				html += '<div class="case"></div>';
+			} else if(grille_shop[i][j] === "l"){
 				if(query.action === 'Interaction'){
 					if(grille_shop[cx-1][cy] === "l"){
 						html += '<div class="table">';
@@ -87,11 +89,9 @@ const interieur_magasin = function (grille_shop, query) {
             } else if(grille_shop[i][j] === "s"){
 				if(query.action === 'Interaction'){
                     if(grille_shop[cx-1][cy] === "s"){
-                        html += '<div class="table_save">';
-						html += '<form action="/req_shop" method="GET">';
+                        html += '<div class="table_save" id="save">';
                         html += '<label id="texte_save">Voulez-vous sauvegarder la partie?</label>';
-                        html += '<button name="action" value="save" id="bouton">Oui</button>';
-						html += '</form>';
+                        html += '<button onclick="save()" id="bouton">Oui</button>';
                         html += '</div>';
 
                     } else { 

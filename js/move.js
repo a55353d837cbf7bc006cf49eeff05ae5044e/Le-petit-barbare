@@ -30,6 +30,7 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 	let reponse;
 	let enemy = 3;
 	let save = false;
+	let n;
 
 	// On fait apparaitre les ennemis que si le joueur est sur la 4ème ligne.
 	for(let i = 0; i < bfld.length; i++){
@@ -99,8 +100,10 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 		}
 	
 	} else if(play === "Soigner"){
-		perso.life = Math.min(perso.life + 30, 100);
-		heros[0].potion -= 1;
+		if(perso.potion >= 1){
+			perso.life = Math.min(perso.life + 30, 100);
+			heros[0].potion -= 1;
+		}
 	}else if (play === "Attaquer"){
 		at = 0;
 		if(perso.scry === 1){
@@ -123,19 +126,16 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 			}
 			if (checktarget === 1){
 				if(query.arme === "hache" && perso.hache >=1){
-					heros[0].hache -=1;
 					damage = Math.floor(Math.random()*15) + 30;
 				}else if(query.arme === "dague" && perso.dague >=1){
-					heros[0].dague -= 1;
                     damage = Math.floor(Math.random()*30) + 35;
+				}else if(query.arme === "epee" && perso.epee){
+					damage = Math.floor(Math.random()*25) + 30;
 				}else if(query.arme === "masse" && perso.masse >=1){
-					heros[0].masse -= 1;
                     damage = Math.floor(Math.random()*70) + 10;
 				}else if(query.arme === "epee_1" && perso.epee_1 >=1){
-					heros[0].epee_1 -= 1;
                     damage = Math.floor(Math.random()*5) + 55;
 				}else if(query.arme === "epee_2" && perso.epee_2 >=1){
-					heros[0].epee_2 -= 1;
                     damage = Math.floor(Math.random()*20) + 85;
 				}else{
 					damage = Math.floor(Math.random()*10) + 25;
@@ -148,7 +148,6 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 			}if(checktarget2 === 1){
 				if(query.arme === "arc" && perso.arc >= 1){
 					damage = Math.floor(Math.random()*25) + 45;
-					heros[0].arc -= 1;
 					if(at === 0){
 						target.life = target.life - damage;
 						at = 1;
@@ -176,19 +175,16 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
             }
             if (checktarget === 1){
                 if(query.arme === "hache" && perso.hache >=1){
-					heros[0].hache -= 1;
                     damage = Math.floor(Math.random()*15) + 30;
                 }else if(query.arme === "dague" && perso.dague >=1){
-					heros[0].dague -= 1;
                     damage = Math.floor(Math.random()*30) + 35;
+				}else if(query.arme === "epee" && perso.epee){
+                    damage = Math.floor(Math.random()*25) + 30;
                 }else if(query.arme === "masse" && perso.masse >=1){
-					heros[0].masse -= 1;
                     damage = Math.floor(Math.random()*70) + 10;
                 }else if(query.arme === "epee_1" && perso.epee_1 >=1){
-					heros[0].epee_1 -= 1;
                     damage = Math.floor(Math.random()*5) + 55;
                 }else if(query.arme === "epee_2" && perso.epee_2 >=1){
-					heros[0].epee_2 -= 1;
                     damage = Math.floor(Math.random()*20) + 85;
                 }else{
 					damage = Math.floor(Math.random()*10) + 25;
@@ -200,7 +196,6 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 				}
 			}if(checktarget2 === 1){
                 if(query.arme === "arc" && perso.arc >= 1){
-					heros[0].arc -= 1;
                     damage = Math.floor(Math.random()*25) + 45;
 					if(at ===0){
 						target.life = targer.life - damage;
@@ -235,7 +230,7 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 
 	} else if(oppo.length === 0 && wave[0]!== 0){
 		wave[0] = wave[0] + 1;
-		if (wave[0] < 2){
+		if (wave[0] < 3){
 			// Vague suivante (dans le même niveau).
 			ennemi = pop_ennemi(bfld);
 			oppo.push(...ennemi);
@@ -269,16 +264,16 @@ const move = function(req, res, query, bfld, wave, oppo, heros, niveau, life_ene
 			reponse.casse = heros[0].epee_2;
 			reponse.dague = heros[0].dague;
 
-		}else if (wave[0] === 2){
+		}else if (wave[0] === 3){
 			// Niveau suivant.
-			money = Math.floor(Math.random()*30 + niveau[0]);
+			money = Math.floor(Math.random()*30 + niveau[0]*10 + 10);
 			heros[0].pieces = heros[0].pieces + money;
     		niveau[0] = niveau[0] + 1;
 			
-			if(niveau[0]%2 === 0 && niveau[0] !== 6){
-				page = fs.readFileSync('./html/palier.html', 'utf-8');
-			}else if(niveau[0]%2 === 1 || niveau[0]=== 3 || niveau[0] === 5){
-				page = fs.readFileSync('./html/palier2.html', 'utf-8');
+			if(niveau[0] !== 7){
+
+				n = niveau[0];
+				page = fs.readFileSync('./html/palier' + n + '.html', 'utf-8');
 			}else{
 				page = fs.readFileSync('./html/win.html', 'utf-8');
 			}

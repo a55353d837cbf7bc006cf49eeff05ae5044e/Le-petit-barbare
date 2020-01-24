@@ -29,7 +29,7 @@ const move_shop = function(res, req, query, grille_magasin) {
     }
 
 	if (play === "Haut"){
-       if (cx !== 0){
+       if (cx !== 1){
            if (grille_magasin[cx-1][cy] === " "){
                grille_magasin[cx-1][cy] = "x";
                grille_magasin[cx][cy] = " ";
@@ -40,7 +40,7 @@ const move_shop = function(res, req, query, grille_magasin) {
 //			}
        }
     }else if(play === "Bas"){
-        if (cx !== 10){
+        if (cx !== 11){
             if (grille_magasin[cx+1][cy] === " "){ 
                 grille_magasin[cx+1][cy] = "x";
                 grille_magasin[cx][cy] = " ";

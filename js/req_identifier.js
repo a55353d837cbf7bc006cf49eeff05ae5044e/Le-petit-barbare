@@ -40,7 +40,7 @@ const trait = function (req, res, query, uuidV4, save, save2, nom) {
 				save[8] = Number(listeMembres[i].epee_2_1);
 				save[9] = Number(listeMembres[i].arc1);
 				save[10] = Number(listeMembres[i].pieces1);
-
+				
 
 				save2[0] = Number(listeMembres[i].sauvegarde2);
 				save2[1] = Number(listeMembres[i].pv2);
@@ -54,6 +54,7 @@ const trait = function (req, res, query, uuidV4, save, save2, nom) {
                 save2[9] = Number(listeMembres[i].arc2);
                 save2[10] = Number(listeMembres[i].pieces2);
 
+				nom[0] = listeMembres[i].pseudo;
 			}
 		}
 		i++;
